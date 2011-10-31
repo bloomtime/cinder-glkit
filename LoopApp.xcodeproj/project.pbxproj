@@ -1,0 +1,319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F86F145F2A3B00C76F9E /* UIKit.framework */; };
+		9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F871145F2A3B00C76F9E /* Foundation.framework */; };
+		9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F873145F2A3B00C76F9E /* CoreGraphics.framework */; };
+		9442F876145F2A3B00C76F9E /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F875145F2A3B00C76F9E /* GLKit.framework */; };
+		9442F878145F2A3B00C76F9E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F877145F2A3B00C76F9E /* OpenGLES.framework */; };
+		9442F8A6145F2BE100C76F9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A1145F2BE100C76F9E /* AppDelegate.m */; };
+		9442F8A7145F2BE100C76F9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A2145F2BE100C76F9E /* main.m */; };
+		9442F8A8145F2BE100C76F9E /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A3145F2BE100C76F9E /* ViewController.mm */; };
+		9464C4AD145F2CDE00E019B6 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9442F89E145F2BE100C76F9E /* Shader.fsh */; };
+		9464C4AE145F2CDE00E019B6 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 9442F89F145F2BE100C76F9E /* Shader.vsh */; };
+		9464C4BE145F2F6300E019B6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9442F86B145F2A3B00C76F9E /* LoopApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoopApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9442F86F145F2A3B00C76F9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9442F871145F2A3B00C76F9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9442F873145F2A3B00C76F9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9442F875145F2A3B00C76F9E /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		9442F877145F2A3B00C76F9E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9442F87B145F2A3B00C76F9E /* LoopApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoopApp-Info.plist"; sourceTree = "<group>"; };
+		9442F881145F2A3B00C76F9E /* LoopApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopApp-Prefix.pch"; sourceTree = "<group>"; };
+		9442F89B145F2BE100C76F9E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9442F89C145F2BE100C76F9E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9442F89E145F2BE100C76F9E /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		9442F89F145F2BE100C76F9E /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		9442F8A1145F2BE100C76F9E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9442F8A2145F2BE100C76F9E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9442F8A3145F2BE100C76F9E /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		9464C4BD145F2F6300E019B6 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9442F868145F2A3B00C76F9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */,
+				9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */,
+				9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */,
+				9442F876145F2A3B00C76F9E /* GLKit.framework in Frameworks */,
+				9442F878145F2A3B00C76F9E /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9442F860145F2A3B00C76F9E = {
+			isa = PBXGroup;
+			children = (
+				9442F879145F2A3B00C76F9E /* LoopApp */,
+				9442F86E145F2A3B00C76F9E /* Frameworks */,
+				9442F86C145F2A3B00C76F9E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9442F86C145F2A3B00C76F9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9442F86B145F2A3B00C76F9E /* LoopApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9442F86E145F2A3B00C76F9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9442F86F145F2A3B00C76F9E /* UIKit.framework */,
+				9442F871145F2A3B00C76F9E /* Foundation.framework */,
+				9442F873145F2A3B00C76F9E /* CoreGraphics.framework */,
+				9442F875145F2A3B00C76F9E /* GLKit.framework */,
+				9442F877145F2A3B00C76F9E /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9442F879145F2A3B00C76F9E /* LoopApp */ = {
+			isa = PBXGroup;
+			children = (
+				9442F89A145F2BE100C76F9E /* include */,
+				9442F8A0145F2BE100C76F9E /* src */,
+				9442F89D145F2BE100C76F9E /* shaders */,
+				9442F87B145F2A3B00C76F9E /* LoopApp-Info.plist */,
+				9442F881145F2A3B00C76F9E /* LoopApp-Prefix.pch */,
+				9464C4BD145F2F6300E019B6 /* ViewController.xib */,
+			);
+			path = LoopApp;
+			sourceTree = "<group>";
+		};
+		9442F89A145F2BE100C76F9E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9442F89B145F2BE100C76F9E /* AppDelegate.h */,
+				9442F89C145F2BE100C76F9E /* ViewController.h */,
+			);
+			path = include;
+			sourceTree = SOURCE_ROOT;
+		};
+		9442F89D145F2BE100C76F9E /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				9442F89E145F2BE100C76F9E /* Shader.fsh */,
+				9442F89F145F2BE100C76F9E /* Shader.vsh */,
+			);
+			path = shaders;
+			sourceTree = SOURCE_ROOT;
+		};
+		9442F8A0145F2BE100C76F9E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9442F8A2145F2BE100C76F9E /* main.m */,
+				9442F8A1145F2BE100C76F9E /* AppDelegate.m */,
+				9442F8A3145F2BE100C76F9E /* ViewController.mm */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9442F86A145F2A3B00C76F9E /* LoopApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "LoopApp" */;
+			buildPhases = (
+				9442F867145F2A3B00C76F9E /* Sources */,
+				9442F868145F2A3B00C76F9E /* Frameworks */,
+				9442F869145F2A3B00C76F9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoopApp;
+			productName = LoopApp;
+			productReference = 9442F86B145F2A3B00C76F9E /* LoopApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9442F862145F2A3B00C76F9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "LoopApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9442F860145F2A3B00C76F9E;
+			productRefGroup = 9442F86C145F2A3B00C76F9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9442F86A145F2A3B00C76F9E /* LoopApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9442F869145F2A3B00C76F9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9464C4AD145F2CDE00E019B6 /* Shader.fsh in Resources */,
+				9464C4AE145F2CDE00E019B6 /* Shader.vsh in Resources */,
+				9464C4BE145F2F6300E019B6 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9442F867145F2A3B00C76F9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9442F8A6145F2BE100C76F9E /* AppDelegate.m in Sources */,
+				9442F8A7145F2BE100C76F9E /* main.m in Sources */,
+				9442F8A8145F2BE100C76F9E /* ViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9442F88F145F2A3B00C76F9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CINDER_PATH = "../../frameworks/cinder-es2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" include";
+			};
+			name = Debug;
+		};
+		9442F890145F2A3B00C76F9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CINDER_PATH = "../../frameworks/cinder-es2";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" include";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9442F892145F2A3B00C76F9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LoopApp-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "LoopApp-Info.plist";
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
+					"\"$(CINDER_PATH)/lib/libcinder-iphone_d.a\"",
+					"-lz",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = (
+					"\"$(CINDER_PATH)/lib/libcinder-iphone-sim_d.a\"",
+					"-lz",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9442F893145F2A3B00C76F9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LoopApp-Prefix.pch";
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = "LoopApp-Info.plist";
+				OTHER_LDFLAGS = "";
+				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
+					"\"$(CINDER_PATH)/lib/libcinder-iphone.a\"",
+					"-lz",
+				);
+				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=*]" = (
+					"\"$(CINDER_PATH)/lib/libcinder-iphone-sim.a\"",
+					"-lz",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "LoopApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9442F88F145F2A3B00C76F9E /* Debug */,
+				9442F890145F2A3B00C76F9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "LoopApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9442F892145F2A3B00C76F9E /* Debug */,
+				9442F893145F2A3B00C76F9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9442F862145F2A3B00C76F9E /* Project object */;
+}
