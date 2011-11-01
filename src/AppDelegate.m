@@ -1,18 +1,20 @@
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "CinderGLViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize view_controller = _view_controller;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+
+    self.view_controller = [[CinderGLViewController alloc] initWithNibName: @"ViewController" 
+                                                                   bundle: nil];
+
+    self.window.rootViewController = self.view_controller;
     [self.window makeKeyAndVisible];
     return YES;
 }
