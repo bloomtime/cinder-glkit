@@ -1,28 +1,25 @@
 #import "CinderGLViewController.h"
 
-#include "cinder/gl/gl.h"
-#include "cinder/gl/GlslProg.h"
+#include "cinder/Area.h"
 #include "cinder/Vector.h"
-#include "cinder/Matrix.h"
 
 using namespace ci;
-
-
-@interface CinderGLViewController(){
-    gl::GlslProg program;
-}
-
-@property (strong, nonatomic) EAGLContext *context;
-
-- (void)setupGL;
-- (void)tearDownGL;
-
-@end
 
 
 @implementation CinderGLViewController
 
 @synthesize context = _context;
+
+
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self->m_sketch = NULL;
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad
 {
@@ -34,18 +31,21 @@ using namespace ci;
         NSLog(@"Failed to create ES2 context");
     }
     
-    GLKView *view = (GLKView*)self.view;
+    GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    [self setupGL];
+    if(m_sketch)
+        [self setSketch: m_sketch];
 }
 
 - (void)viewDidUnload
 {    
     [super viewDidUnload];
     
-    [self tearDownGL];
+    if(m_sketch){
+        m_sketch->tearDown();
+    }
     
     if([EAGLContext currentContext] == self.context){
         [EAGLContext setCurrentContext: nil];
@@ -67,33 +67,40 @@ using namespace ci;
         return YES;
 }
 
-- (void)setupGL
-{
-    [EAGLContext setCurrentContext: self.context];
-    
-    glEnable(GL_DEPTH_TEST);
-    
-    // Create Shaders and such
-}
 
-- (void)tearDownGL
+- (void)setSketch:(CinderGLSketch *)sketch
 {
-    [EAGLContext setCurrentContext: self.context];
+    m_sketch = sketch;
+    
+    if(self.view){
+        [EAGLContext setCurrentContext: self.context];
+        
+        Vec2i size(self.view.bounds.size.width, self.view.bounds.size.height);
+        
+        m_sketch->setSize(size);
+        if(m_sketch->m_needs_setup){
+            m_sketch->setup();
+            m_sketch->m_needs_setup = false;
+        }
+    }
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)update
 {
-    // Step
+    if(m_sketch){
+        m_sketch->update();
+    }
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    glClearColor(0.65f, 0.65f, 0.65f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    [EAGLContext setCurrentContext: self.context];
     
-    // Draw
+    if(m_sketch){
+        m_sketch->draw(Area(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
+    }
 }
 
 @end

@@ -12,12 +12,17 @@
 		9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F873145F2A3B00C76F9E /* CoreGraphics.framework */; };
 		9442F876145F2A3B00C76F9E /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F875145F2A3B00C76F9E /* GLKit.framework */; };
 		9442F878145F2A3B00C76F9E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F877145F2A3B00C76F9E /* OpenGLES.framework */; };
-		9442F8A6145F2BE100C76F9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A1145F2BE100C76F9E /* AppDelegate.m */; };
+		9442F8A6145F2BE100C76F9E /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A1145F2BE100C76F9E /* AppDelegate.mm */; };
 		9442F8A7145F2BE100C76F9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A2145F2BE100C76F9E /* main.m */; };
 		9442F8A8145F2BE100C76F9E /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9442F8A3145F2BE100C76F9E /* CinderGLViewController.mm */; };
+		944F2CFD1460D21900BAB970 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944F2CFB1460D21900BAB970 /* AudioToolbox.framework */; };
+		944F2CFE1460D21900BAB970 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944F2CFC1460D21900BAB970 /* AVFoundation.framework */; };
+		944F2D001460D24900BAB970 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944F2CFF1460D24900BAB970 /* CoreText.framework */; };
+		944F2D041460D2A700BAB970 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944F2D031460D2A700BAB970 /* QuartzCore.framework */; };
 		9464C4AD145F2CDE00E019B6 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9442F89E145F2BE100C76F9E /* Shader.fsh */; };
 		9464C4AE145F2CDE00E019B6 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 9442F89F145F2BE100C76F9E /* Shader.vsh */; };
-		9464C4BE145F2F6300E019B6 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* ViewController.xib */; };
+		9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* CinderGLView.xib */; };
+		94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D3A4621469E1CD007563C4 /* DemoSketch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,13 +35,20 @@
 		9442F87B145F2A3B00C76F9E /* LoopApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LoopApp-Info.plist"; sourceTree = "<group>"; };
 		9442F881145F2A3B00C76F9E /* LoopApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoopApp-Prefix.pch"; sourceTree = "<group>"; };
 		9442F89B145F2BE100C76F9E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9442F89C145F2BE100C76F9E /* CinderGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CinderGLViewController.h; sourceTree = "<group>"; };
+		9442F89C145F2BE100C76F9E /* CinderGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLViewController.h; sourceTree = "<group>"; };
 		9442F89E145F2BE100C76F9E /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		9442F89F145F2BE100C76F9E /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
-		9442F8A1145F2BE100C76F9E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9442F8A1145F2BE100C76F9E /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		9442F8A2145F2BE100C76F9E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9442F8A3145F2BE100C76F9E /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
-		9464C4BD145F2F6300E019B6 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = SOURCE_ROOT; };
+		944F2CFB1460D21900BAB970 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		944F2CFC1460D21900BAB970 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		944F2CFF1460D24900BAB970 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		944F2D031460D2A700BAB970 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9464C4BD145F2F6300E019B6 /* CinderGLView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinderGLView.xib; sourceTree = SOURCE_ROOT; };
+		94727D4C1468B42F005308CC /* CinderGLSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLSketch.h; sourceTree = "<group>"; };
+		94D3A4621469E1CD007563C4 /* DemoSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DemoSketch.cpp; sourceTree = "<group>"; };
+		94D3A4641469E1E4007563C4 /* DemoSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoSketch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +56,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				944F2D041460D2A700BAB970 /* QuartzCore.framework in Frameworks */,
+				944F2D001460D24900BAB970 /* CoreText.framework in Frameworks */,
+				944F2CFD1460D21900BAB970 /* AudioToolbox.framework in Frameworks */,
+				944F2CFE1460D21900BAB970 /* AVFoundation.framework in Frameworks */,
 				9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */,
 				9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */,
 				9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +91,10 @@
 		9442F86E145F2A3B00C76F9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				944F2D031460D2A700BAB970 /* QuartzCore.framework */,
+				944F2CFF1460D24900BAB970 /* CoreText.framework */,
+				944F2CFB1460D21900BAB970 /* AudioToolbox.framework */,
+				944F2CFC1460D21900BAB970 /* AVFoundation.framework */,
 				9442F86F145F2A3B00C76F9E /* UIKit.framework */,
 				9442F871145F2A3B00C76F9E /* Foundation.framework */,
 				9442F873145F2A3B00C76F9E /* CoreGraphics.framework */,
@@ -92,7 +112,7 @@
 				9442F89D145F2BE100C76F9E /* shaders */,
 				9442F87B145F2A3B00C76F9E /* LoopApp-Info.plist */,
 				9442F881145F2A3B00C76F9E /* LoopApp-Prefix.pch */,
-				9464C4BD145F2F6300E019B6 /* ViewController.xib */,
+				9464C4BD145F2F6300E019B6 /* CinderGLView.xib */,
 			);
 			path = LoopApp;
 			sourceTree = "<group>";
@@ -101,7 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				9442F89B145F2BE100C76F9E /* AppDelegate.h */,
+				94727D4C1468B42F005308CC /* CinderGLSketch.h */,
 				9442F89C145F2BE100C76F9E /* CinderGLViewController.h */,
+				94D3A4641469E1E4007563C4 /* DemoSketch.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -119,8 +141,9 @@
 			isa = PBXGroup;
 			children = (
 				9442F8A2145F2BE100C76F9E /* main.m */,
-				9442F8A1145F2BE100C76F9E /* AppDelegate.m */,
+				9442F8A1145F2BE100C76F9E /* AppDelegate.mm */,
 				9442F8A3145F2BE100C76F9E /* CinderGLViewController.mm */,
+				94D3A4621469E1CD007563C4 /* DemoSketch.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -177,7 +200,7 @@
 			files = (
 				9464C4AD145F2CDE00E019B6 /* Shader.fsh in Resources */,
 				9464C4AE145F2CDE00E019B6 /* Shader.vsh in Resources */,
-				9464C4BE145F2F6300E019B6 /* ViewController.xib in Resources */,
+				9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,9 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9442F8A6145F2BE100C76F9E /* AppDelegate.m in Sources */,
+				9442F8A6145F2BE100C76F9E /* AppDelegate.mm in Sources */,
 				9442F8A7145F2BE100C76F9E /* main.m in Sources */,
 				9442F8A8145F2BE100C76F9E /* CinderGLViewController.mm in Sources */,
+				94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

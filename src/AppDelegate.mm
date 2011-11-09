@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
-
 #import "CinderGLViewController.h"
+
+#include "DemoSketch.h"
 
 @implementation AppDelegate
 
@@ -9,13 +10,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    CGRect screen_bounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame: screen_bounds];
 
-    self.view_controller = [[CinderGLViewController alloc] initWithNibName: @"ViewController" 
-                                                                   bundle: nil];
+    self.view_controller = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
+                                                                    bundle: nil];
+                                                                    
+    DemoSketch *sketch = new DemoSketch();
+    [self.view_controller setSketch: sketch];
 
     self.window.rootViewController = self.view_controller;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
