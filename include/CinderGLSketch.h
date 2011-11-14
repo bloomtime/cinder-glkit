@@ -2,10 +2,13 @@
 
 #include "cinder/Vector.h"
 #include "cinder/Area.h"
+#include "cinder/DataSource.h"
 
 #include <ostream>
 
 namespace cinder {
+
+using namespace std;
 
 class CinderGLSketch {
 public:
@@ -23,7 +26,11 @@ public:
     const Vec2i& getSize() const { return m_size; }
     void         setSize(const Vec2i &size){ m_size = size; }
     
-    std::ostream& console(){ return std::cout; }
+    ostream& console(){ return cout; }
+    
+    fs::path getResourcePath( const fs::path &rsrcRelativePath );
+    fs::path getResourcePath();
+    DataSourcePathRef loadResource(const string &path);
     
     bool m_needs_setup;
 
