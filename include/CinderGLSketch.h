@@ -28,10 +28,6 @@ public:
     
     ostream& console(){ return cout; }
     
-    fs::path getResourcePath( const fs::path &rsrcRelativePath );
-    fs::path getResourcePath();
-    DataSourcePathRef loadResource(const string &path);
-    
     bool m_needs_setup;
 
 protected:

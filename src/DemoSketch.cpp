@@ -1,6 +1,7 @@
 #include "DemoSketch.h"
 
 #include "cinder/ImageIO.h"
+#include "cinder/app/App.h"
 
 void DemoSketch::setup()
 {
@@ -20,12 +21,12 @@ void DemoSketch::setup()
     m_fbo_read.unbindFramebuffer();
     
     try{
-        m_shader = gl::GlslProg(loadResource("ripple.vsh"), loadResource("ripple.fsh"));
+        m_shader = gl::GlslProg(app::loadResource("ripple.vsh"), app::loadResource("ripple.fsh"));
     }catch(exception &e){
         std::cout << e.what();
     }
      
-//    m_touch_tex = gl::Texture(loadImage(loadResource("pimple_32.png")));
+    m_touch_tex = gl::Texture(loadImage(app::loadResource("touch_32.png")));
 
     m_camera.setOrtho(0, getSize().x, getSize().y, 0, -1, 1);
 }
