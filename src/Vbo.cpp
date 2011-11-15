@@ -13,7 +13,7 @@ Vbo::~Vbo()
 {
 }
 
-void Vbo::setAttribute(const Attribute &attr)
+void Vbo::set(const Attribute &attr)
 {
     m_attributes[attr.getName()] = AttributeRef(new Attribute(attr));
 }
@@ -98,8 +98,8 @@ Vbo Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
     float texcoords[] = { 0, 0, 0, 1, 1, 0, 1, 1 };
     
     Vbo vbo;
-    vbo.setAttribute(Attribute("position", 3, Buffer(positions, sizeof(float) * 12, true)));
-    vbo.setAttribute(Attribute("texcoord", 2, Buffer(texcoords, sizeof(float) * 8, true)));
+    vbo.set(Attribute("position", 3, Buffer(positions, sizeof(float) * 12, true)));
+    vbo.set(Attribute("texcoord", 2, Buffer(texcoords, sizeof(float) * 8, true)));
     
     return vbo;
 }

@@ -57,7 +57,7 @@ public:
 
     void update();
     void draw();
-    void setAttribute(const Attribute &attr);
+    void set(const Attribute &attr);
     
     static Vbo createPlane(const Vec2f &pnt1, const Vec2f &pnt2);
 
