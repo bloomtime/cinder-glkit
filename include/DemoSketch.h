@@ -5,6 +5,7 @@
 #include "cinder/gl/GlslProg.h"
 #include "cinder/gl/Fbo.h"
 #include "cinder/gl/Texture.h"
+#include "Vbo.h"
 
 #include "cinder/Vector.h"
 #include "cinder/Camera.h"
@@ -20,6 +21,8 @@ public:
     
     gl::Fbo m_fbo_read, m_fbo_write;
     Vec2i   m_fbo_size;
+    
+    gl::Vbo m_plane;
     
     gl::GlslProg m_shader;
     

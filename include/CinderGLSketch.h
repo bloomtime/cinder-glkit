@@ -2,7 +2,7 @@
 
 #include "cinder/Vector.h"
 #include "cinder/Area.h"
-#include "cinder/DataSource.h"
+#include "cinder/Timer.h"
 
 #include <ostream>
 
@@ -14,7 +14,9 @@ class CinderGLSketch {
 public:
 
     CinderGLSketch()
-    : m_needs_setup(true){};
+    : m_needs_setup(true)
+    , m_timer(true)
+    {};
     
     virtual ~CinderGLSketch(){};
 
@@ -26,6 +28,8 @@ public:
     const Vec2i& getSize() const { return m_size; }
     void         setSize(const Vec2i &size){ m_size = size; }
     
+    double getElapsedSeconds() const { return m_timer.getSeconds(); }
+    
     ostream& console(){ return cout; }
     
     bool m_needs_setup;
@@ -33,6 +37,7 @@ public:
 protected:
 
     Vec2i m_size;
+    Timer m_timer;
 
 };
 

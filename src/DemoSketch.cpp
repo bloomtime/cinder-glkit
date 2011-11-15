@@ -29,6 +29,9 @@ void DemoSketch::setup()
     m_touch_tex = gl::Texture(loadImage(app::loadResource("touch_32.png")));
 
     m_camera.setOrtho(0, getSize().x, getSize().y, 0, -1, 1);
+    
+    m_plane = gl::Vbo::createPlane(Vec2f::zero(), getSize());
+    m_plane.update();
 }
 
 void DemoSketch::update()
@@ -40,4 +43,14 @@ void DemoSketch::draw(const Area &area)
 {
     glViewport(0, 0, m_size.x, m_size.y);
     gl::clear(ColorA(1, 1, 0, 1));
+    
+    
+    
+    m_shader.bind();
+    m_shader.uniform("u_mvp_matrix", m_camera.getProjectionMatrix() * m_camera.getModelViewMatrix());
+    m_shader.uniform("u_resolution", getSize());
+    m_shader.uniform("u_time", (float)getElapsedSeconds());
+    m_shader.uniform("u_texture_prev", 0);
+    
+    
 }
