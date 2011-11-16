@@ -26,7 +26,6 @@ public:
         void bind();
         void bindAndEnable();
         
-//        void   setTarget(GLenum target){ m_target = target; }
         GLenum getTarget() const { return m_target; }
         
         void   setUsage(GLenum usage){ m_usage = usage; m_data_dirty = true; }
@@ -37,7 +36,7 @@ public:
         
         Attribute&    setData(Buffer data){ m_data = data; m_data_dirty = true; return *this; };
         Attribute&    setData(const void* data, int data_length);
-        Attribute&    setData(const vector<int> &data);
+//        Attribute&    setData(const vector<int> &data);
         Attribute&    setData(const vector<float> &data);
         Attribute&    setData(const vector<Vec2f> &data);
         Attribute&    setData(const vector<Vec3f> &data);
@@ -69,7 +68,7 @@ public:
     void update();
     void draw();
     void set(const Attribute &attr);
-    void set(const Attribute *attr);
+    AttributeRef get(const string &name);
     void assignLocations(GlslProg shader);
     
     static Vbo createPlane(const Vec2f &p1, const Vec2f &p2);

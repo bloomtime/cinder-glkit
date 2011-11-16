@@ -15,6 +15,13 @@ void Vbo::set(const Attribute &attr)
 {
     m_attributes[attr.getName()] = AttributeRef(new Attribute(attr));
 }
+Vbo::AttributeRef Vbo::get(const string &name)
+{
+    auto iter = m_attributes.find(name);
+    if(iter != m_attributes.end())
+        return iter->second;
+    return AttributeRef();
+}
 
 void Vbo::assignLocations(GlslProg shader)
 {
@@ -78,10 +85,10 @@ Vbo::Attribute& Vbo::Attribute::setData(const void* data, int data_length)
     buf.copyFrom(data, data_length);
     return setData(buf);
 }
-Vbo::Attribute& Vbo::Attribute::setData(const vector<int> &data)
-{
-    return setData(&data[0], sizeof(int) * data.size());
-}
+//Vbo::Attribute& Vbo::Attribute::setData(const vector<int> &data)
+//{
+//    return setData(&data[0], sizeof(int) * data.size());
+//}
 Vbo::Attribute& Vbo::Attribute::setData(const vector<float> &data)
 {
     return setData(&data[0], sizeof(float) * data.size());
