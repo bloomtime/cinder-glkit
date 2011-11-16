@@ -21,13 +21,13 @@
 		944F2D041460D2A700BAB970 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 944F2D031460D2A700BAB970 /* QuartzCore.framework */; };
 		94551A351471D88000D74C18 /* touch_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 94551A341471D88000D74C18 /* touch_32.png */; };
 		94551A381471EC5700D74C18 /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94551A371471EC5700D74C18 /* Vbo.cpp */; };
-		94551A401473184700D74C18 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94551A3F1473184700D74C18 /* CoreVideo.framework */; };
-		94551A421473185C00D74C18 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94551A411473185C00D74C18 /* CoreMedia.framework */; };
 		9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* CinderGLView.xib */; };
 		947F492C1471B63D002937B9 /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 947F492B1471B63D002937B9 /* CinderGLSketch.mm */; };
 		947F492E1471C0C9002937B9 /* ripple.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F491F1471A7D9002937B9 /* ripple.vsh */; };
 		947F492F1471C0CC002937B9 /* ripple.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F49221471A7EC002937B9 /* ripple.fsh */; };
 		94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D3A4621469E1CD007563C4 /* DemoSketch.cpp */; };
+		E2E774031473184D00FD113C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774021473184D00FD113C /* CoreVideo.framework */; };
+		E2E774051473187900FD113C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774041473187900FD113C /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,8 +51,6 @@
 		94551A341471D88000D74C18 /* touch_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch_32.png; sourceTree = "<group>"; };
 		94551A361471E93E00D74C18 /* Vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vbo.h; sourceTree = "<group>"; };
 		94551A371471EC5700D74C18 /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
-		94551A3F1473184700D74C18 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		94551A411473185C00D74C18 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9464C4BD145F2F6300E019B6 /* CinderGLView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinderGLView.xib; sourceTree = SOURCE_ROOT; };
 		94727D4C1468B42F005308CC /* CinderGLSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLSketch.h; sourceTree = "<group>"; };
 		947F491F1471A7D9002937B9 /* ripple.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple.vsh; sourceTree = "<group>"; };
@@ -60,6 +58,8 @@
 		947F492B1471B63D002937B9 /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
 		947F492D1471B8A9002937B9 /* DemoSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoSketch.h; sourceTree = "<group>"; };
 		94D3A4621469E1CD007563C4 /* DemoSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DemoSketch.cpp; sourceTree = "<group>"; };
+		E2E774021473184D00FD113C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E2E774041473187900FD113C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94551A421473185C00D74C18 /* CoreMedia.framework in Frameworks */,
-				94551A401473184700D74C18 /* CoreVideo.framework in Frameworks */,
+				E2E774051473187900FD113C /* CoreMedia.framework in Frameworks */,
+				E2E774031473184D00FD113C /* CoreVideo.framework in Frameworks */,
 				944F2D041460D2A700BAB970 /* QuartzCore.framework in Frameworks */,
 				944F2D001460D24900BAB970 /* CoreText.framework in Frameworks */,
 				944F2CFD1460D21900BAB970 /* AudioToolbox.framework in Frameworks */,
@@ -104,8 +104,8 @@
 		9442F86E145F2A3B00C76F9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				94551A411473185C00D74C18 /* CoreMedia.framework */,
-				94551A3F1473184700D74C18 /* CoreVideo.framework */,
+				E2E774041473187900FD113C /* CoreMedia.framework */,
+				E2E774021473184D00FD113C /* CoreVideo.framework */,
 				944F2D031460D2A700BAB970 /* QuartzCore.framework */,
 				944F2CFF1460D24900BAB970 /* CoreText.framework */,
 				944F2CFB1460D21900BAB970 /* AudioToolbox.framework */,
@@ -309,6 +309,9 @@
 		9442F892145F2A3B00C76F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = "$(CINDER_PATH_$(USER))";
+				CINDER_PATH_ryan = "../../frameworks/cinder-es2";
+				CINDER_PATH_tom = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoopApp-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
@@ -330,6 +333,9 @@
 		9442F893145F2A3B00C76F9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = "$(CINDER_PATH_$(USER))";
+				CINDER_PATH_ryan = "../../frameworks/cinder-es2";
+				CINDER_PATH_tom = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LoopApp-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
