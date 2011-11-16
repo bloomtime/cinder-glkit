@@ -1,10 +1,13 @@
 #import "CinderGLViewController.h"
 
+#include <vector>
+
 #include "cinder/Area.h"
 #include "cinder/Vector.h"
+#include "cinder/app/TouchEvent.h"
 
 using namespace ci;
-
+using namespace ci::app;
 
 @implementation CinderGLViewController
 
@@ -101,6 +104,112 @@ using namespace ci;
     if(m_sketch){
         m_sketch->draw(Area(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
     }
+}
+
+#pragma mark - touch methods
+
+- (uint32_t)addTouchToMap:(UITouch*)touch
+{
+	uint32_t candidateId = 0;
+	bool found = true;
+	while( found ) {
+		candidateId++;
+		found = false;
+		for( std::map<UITouch*,uint32_t>::const_iterator mapIt = mTouchIdMap.begin(); mapIt != mTouchIdMap.end(); ++mapIt ) {
+			if( mapIt->second == candidateId ) {
+				found = true;
+				break;
+			}
+		}
+	}
+	
+	mTouchIdMap.insert( std::make_pair( touch, candidateId ) );
+	
+	return candidateId;
+}
+
+- (void)removeTouchFromMap:(UITouch*)touch
+{
+	std::map<UITouch*,uint32_t>::iterator found( mTouchIdMap.find( touch ) );
+	if( found == mTouchIdMap.end() )
+		;//std::cout << "Couldn' find touch in map?" << std::endl;
+	else
+		mTouchIdMap.erase( found );
+}
+
+- (uint32_t)findTouchInMap:(UITouch*)touch
+{
+	std::map<UITouch*,uint32_t>::const_iterator found( mTouchIdMap.find( touch ) );
+	if( found == mTouchIdMap.end() ) {
+		;//std::cout << "Couldn' find touch in map?" << std::endl;
+		return 0;
+	}
+	else
+		return found->second;
+}
+
+- (void)updateActiveTouches
+{
+	static float contentScale = [self.view respondsToSelector:NSSelectorFromString(@"contentScaleFactor")] ? self.view.contentScaleFactor : 1;
+    
+	std::vector<TouchEvent::Touch> activeTouches;
+	for( std::map<UITouch*,uint32_t>::const_iterator touchIt = mTouchIdMap.begin(); touchIt != mTouchIdMap.end(); ++touchIt ) {
+		CGPoint pt = [touchIt->first locationInView:self.view];
+		CGPoint prevPt = [touchIt->first previousLocationInView:self.view];
+		activeTouches.push_back( TouchEvent::Touch( Vec2f( pt.x, pt.y ) * contentScale, Vec2f( prevPt.x, prevPt.y ) * contentScale, touchIt->second, [touchIt->first timestamp], (__bridge_retained void*)touchIt->first ) );
+	}
+	m_sketch->setActiveTouches( activeTouches );
+}
+
+- (std::vector<ci::app::TouchEvent::Touch>)convertTouches:(NSSet*)touches andRemoveFromMap:(BOOL)remove
+{
+    static float contentScale = [self.view respondsToSelector:NSSelectorFromString(@"contentScaleFactor")] ? self.view.contentScaleFactor : 1;
+    
+    std::vector<TouchEvent::Touch> touchList;
+    for( UITouch *touch in touches ) {
+        CGPoint pt = [touch locationInView:self.view];
+        CGPoint prevPt = [touch previousLocationInView:self.view];
+        touchList.push_back( TouchEvent::Touch( Vec2f( pt.x, pt.y ) * contentScale, Vec2f( prevPt.x, prevPt.y ) * contentScale, [self addTouchToMap:touch], [touch timestamp], (__bridge_retained void*)touch ) );
+        if (remove) {
+            [self removeTouchFromMap:touch];
+        }
+    }
+    return touchList;
+}
+
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event
+{	
+    if(m_sketch){
+        std::vector<TouchEvent::Touch> touchList = [self convertTouches:touches andRemoveFromMap:NO];
+        [self updateActiveTouches];
+        if( ! touchList.empty() )
+            m_sketch->touchesBegan( TouchEvent( touchList ) );
+    }
+}
+
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    if(m_sketch){
+        std::vector<TouchEvent::Touch> touchList = [self convertTouches:touches andRemoveFromMap:NO];
+        [self updateActiveTouches];
+        if( ! touchList.empty() )
+            m_sketch->touchesMoved( TouchEvent( touchList ) );
+    }
+}
+
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
+{
+    if(m_sketch){
+        std::vector<TouchEvent::Touch> touchList = [self convertTouches:touches andRemoveFromMap:YES];        
+        [self updateActiveTouches];
+        if( ! touchList.empty() )
+            m_sketch->touchesEnded( TouchEvent( touchList ) );
+    }
+}
+
+- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
+{
+	[self touchesEnded:touches withEvent:event];
 }
 
 @end
