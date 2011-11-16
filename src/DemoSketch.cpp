@@ -23,15 +23,22 @@ void DemoSketch::setup()
     try{
         m_shader = gl::GlslProg(app::loadResource("ripple.vsh"), app::loadResource("ripple.fsh"));
     }catch(exception &e){
-        std::cout << e.what();
+        cout << "Shader Compile Failed: " << e.what();
     }
      
     m_touch_tex = gl::Texture(loadImage(app::loadResource("touch_32.png")));
 
     m_camera.setOrtho(0, getSize().x, getSize().y, 0, -1, 1);
+    m_camera_persp.setPerspective(60, getAspectRatio(), 0.01f, 10.0f);
+    m_camera_persp.lookAt(Vec3f(0, 0, -5), Vec3f::zero(), Vec3f::yAxis());
     
     m_plane = gl::Vbo::createPlane(Vec2f::zero(), getSize());
     m_plane.assignLocations(m_shader);
+    
+    m_box = gl::Vbo::createBox(Vec3f::one());
+    m_box.assignLocations(m_shader);
+    
+    glEnable(GL_DEPTH_TEST);
 }
 
 void DemoSketch::update()
@@ -45,10 +52,15 @@ void DemoSketch::draw(const Area &area)
     gl::clear(ColorA(1, 1, 0, 1));
     
     m_shader.bind();
-    m_shader.uniform("u_mvp_matrix", m_camera.getModelViewMatrix() *  m_camera.getProjectionMatrix());
+    m_shader.uniform("u_mvp_matrix", m_camera.getProjectionMatrix() * m_camera.getModelViewMatrix());
 //    m_shader.uniform("u_resolution", getSize());
 //    m_shader.uniform("u_time", (float)getElapsedSeconds());
 //    m_shader.uniform("u_texture_prev", 0);
     
     m_plane.draw();
+    
+    glClear(GL_DEPTH_BUFFER_BIT);
+    
+    m_shader.uniform("u_mvp_matrix", m_camera_persp.getProjectionMatrix() * m_camera_persp.getModelViewMatrix() * Matrix44f::createRotation(Vec3f::yAxis(), getElapsedSeconds()));
+    m_box.draw();
 }

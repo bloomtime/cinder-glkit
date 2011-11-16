@@ -45,10 +45,12 @@ void Vbo::draw()
 
 
 Vbo::Attribute::Attribute(const string &name, int size, int location, GLenum usage)
-: m_name(name)
+: m_buffer(0)
+, m_name(name)
 , m_size(size)
 , m_location(location)
 , m_usage(usage)
+, m_data_dirty(false)
 {
     m_target = m_name == "index" ? GL_ELEMENT_ARRAY_BUFFER : GL_ARRAY_BUFFER;
 }
@@ -104,14 +106,14 @@ void Vbo::Attribute::bufferData()
 
 void Vbo::Attribute::bind()
 {
+    if(m_data_dirty)
+        bufferData();
     glBindBuffer(m_target, m_buffer);
 }
 
 void Vbo::Attribute::bindAndEnable()
 {
-    if(m_data_dirty)
-        bufferData();
-    glBindBuffer(m_target, m_buffer);
+    bind();
     glVertexAttribPointer(m_location, m_size, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(m_location);
 }
@@ -127,6 +129,49 @@ Vbo Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
     vbo.set(Attribute("texcoord", 2).setData(texcoords, sizeof(float) * 8));
     
     return vbo;
+}
+
+Vbo Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
+{
+    float positions[] = { p2.x,p2.y,p2.z, p2.x,p1.y,p2.z, p2.x,p1.y,p1.z, p2.x,p2.y,p1.z,   // +X
+                          p2.x,p2.y,p2.z, p2.x,p2.y,p1.z, p1.x,p2.y,p1.z, p1.x,p2.y,p2.z,   // +Y
+                          p2.x,p2.y,p2.z, p1.x,p2.y,p2.z, p1.x,p1.y,p2.z, p2.x,p1.y,p2.z,   // +Z
+                          p1.x,p2.y,p2.z, p1.x,p2.y,p1.z, p1.x,p1.y,p1.z, p1.x,p1.y,p2.z,   // -X
+                          p1.x,p1.y,p1.z, p2.x,p1.y,p1.z, p2.x,p1.y,p2.z, p1.x,p1.y,p2.z,   // -Y
+                          p2.x,p1.y,p1.z, p1.x,p1.y,p1.z, p1.x,p2.y,p1.z, p2.x,p2.y,p1.z }; // -Z
+    
+    float normals[] = { 1, 0, 0,  1, 0, 0,  1, 0, 0,  1, 0, 0,
+                        0, 1, 0,  0, 1, 0,  0, 1, 0,  0, 1, 0,
+                        0, 0, 1,  0, 0, 1,  0, 0, 1,  0, 0, 1,
+                       -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0,
+                        0,-1, 0,  0,-1, 0,  0,-1, 0,  0,-1, 0,
+                        0, 0,-1,  0, 0,-1,  0, 0,-1,  0, 0,-1 };
+    
+    float texcoords[] = { 0,1, 1,1, 1,0, 0,0,
+                          1,1, 1,0, 0,0, 0,1,
+                          0,1, 1,1, 1,0, 0,0,
+                          1,1, 1,0, 0,0, 0,1,
+                          1,0, 0,0, 0,1, 1,1,
+                          1,0, 0,0, 0,1, 1,1 };
+    
+    unsigned short indices[] = { 0, 1, 2, 0, 2, 3,
+                                 4, 5, 6, 4, 6, 7,
+                                 8, 9,10, 8,10,11,
+                                12,13,14,12,14,15,
+                                16,17,18,16,18,19,
+                                20,21,22,20,22,23 };
+    
+    Vbo vbo(GL_TRIANGLES);
+    vbo.set(Attribute("position", 3).setData(positions, sizeof(float) * 72));
+    vbo.set(Attribute("normal", 3).setData(normals, sizeof(float) * 72));
+    vbo.set(Attribute("texcoord", 2).setData(texcoords, sizeof(float) * 48));
+    vbo.set(Attribute("index", 2).setData(indices, sizeof(unsigned short) * 36));
+
+    return vbo;
+}
+Vbo Vbo::createBox(const Vec3f &size)
+{
+    return createBox(size * -0.5f, size * 0.5f);
 }
 
 

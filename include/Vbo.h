@@ -16,7 +16,7 @@ public:
     class Attribute {
     public:
 
-        Attribute() : m_buffer(0){}
+        Attribute(){}
         Attribute(const string &name, int size, int location = -1, GLenum usage = GL_STATIC_DRAW);
         Attribute(const char *name, int size, int location = -1, GLenum usage = GL_STATIC_DRAW);
         Attribute(const Attribute &attr);
@@ -72,7 +72,9 @@ public:
     void set(const Attribute *attr);
     void assignLocations(GlslProg shader);
     
-    static Vbo createPlane(const Vec2f &pnt1, const Vec2f &pnt2);
+    static Vbo createPlane(const Vec2f &p1, const Vec2f &p2);
+    static Vbo createBox(const Vec3f &p1, const Vec3f &p2);
+    static Vbo createBox(const Vec3f &size);
 
 protected:
 

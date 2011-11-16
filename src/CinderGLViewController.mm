@@ -34,9 +34,6 @@ using namespace ci;
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-    
-    if(m_sketch)
-        [self setSketch: m_sketch];
 }
 
 - (void)viewDidUnload
@@ -71,18 +68,6 @@ using namespace ci;
 - (void)setSketch:(CinderGLSketch *)sketch
 {
     m_sketch = sketch;
-    
-    if(self.view){
-        [EAGLContext setCurrentContext: self.context];
-        
-        Vec2i size(self.view.bounds.size.width, self.view.bounds.size.height);
-        
-        m_sketch->setSize(size);
-        if(m_sketch->m_needs_setup){
-            m_sketch->setup();
-            m_sketch->m_needs_setup = false;
-        }
-    }
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
@@ -99,6 +84,15 @@ using namespace ci;
     [EAGLContext setCurrentContext: self.context];
     
     if(m_sketch){
+        GLKView *view = (GLKView *)self.view;
+        
+        m_sketch->setSize(Vec2i(view.drawableWidth, view.drawableHeight));
+        
+        if(m_sketch->m_needs_setup){
+            m_sketch->setup();
+            m_sketch->m_needs_setup = false;
+        }
+        
         m_sketch->draw(Area(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
     }
 }
