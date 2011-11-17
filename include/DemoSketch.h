@@ -24,7 +24,7 @@ public:
     
     gl::VboRef m_plane, m_box;
     
-    gl::GlslProg m_shader;
+    gl::GlslProg m_ripple_shader, m_tex_shader, m_color_shader;
     
     gl::Texture m_touch_tex;
     
