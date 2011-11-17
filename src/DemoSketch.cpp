@@ -33,10 +33,10 @@ void DemoSketch::setup()
     m_camera_persp.lookAt(Vec3f(0, 0, -5), Vec3f::zero(), Vec3f::yAxis());
     
     m_plane = gl::Vbo::createPlane(Vec2f::zero(), getSize());
-    m_plane.assignLocations(m_shader);
+    m_plane->assignLocations(m_shader);
     
     m_box = gl::Vbo::createBox(Vec3f::one());
-    m_box.assignLocations(m_shader);
+    m_box->assignLocations(m_shader);
     
     glEnable(GL_DEPTH_TEST);
 }
@@ -57,10 +57,10 @@ void DemoSketch::draw(const Area &area)
 //    m_shader.uniform("u_time", (float)getElapsedSeconds());
 //    m_shader.uniform("u_texture_prev", 0);
     
-    m_plane.draw();
+    m_plane->draw();
     
     glClear(GL_DEPTH_BUFFER_BIT);
     
     m_shader.uniform("u_mvp_matrix", m_camera_persp.getProjectionMatrix() * m_camera_persp.getModelViewMatrix() * Matrix44f::createRotation(Vec3f::yAxis(), getElapsedSeconds()));
-    m_box.draw();
+    m_box->draw();
 }

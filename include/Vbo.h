@@ -8,11 +8,13 @@
 
 namespace cinder { namespace gl {
 
+class Vbo;
+typedef std::shared_ptr< Vbo > VboRef;
+
 class Vbo {
 public:
 
     class Attribute;
-
     typedef std::shared_ptr< Attribute > AttributeRef;
 
     class Attribute : public std::enable_shared_from_this<Attribute> {
@@ -82,7 +84,6 @@ public:
     };
 
     Vbo(){};
-    Vbo(GLenum type);
     ~Vbo();
 
     void update();
@@ -91,11 +92,14 @@ public:
     void set(AttributeRef attr);
     void assignLocations(GlslProg shader);
     
-    static Vbo createPlane(const Vec2f &p1, const Vec2f &p2);
-    static Vbo createBox(const Vec3f &p1, const Vec3f &p2);
-    static Vbo createBox(const Vec3f &size);
+    static VboRef create(GLenum type);
+    static VboRef createPlane(const Vec2f &p1, const Vec2f &p2);
+    static VboRef createBox(const Vec3f &p1, const Vec3f &p2);
+    static VboRef createBox(const Vec3f &size);
 
 protected:
+
+    Vbo(GLenum type);
 
     GLenum m_type;
 

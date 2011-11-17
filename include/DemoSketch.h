@@ -22,7 +22,7 @@ public:
     gl::Fbo m_fbo_read, m_fbo_write;
     Vec2i   m_fbo_size;
     
-    gl::Vbo m_plane, m_box;
+    gl::VboRef m_plane, m_box;
     
     gl::GlslProg m_shader;
     

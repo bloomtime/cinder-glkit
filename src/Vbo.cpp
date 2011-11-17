@@ -132,57 +132,62 @@ void Vbo::Attribute::bindAndEnable()
 }
 
 
-Vbo Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
+VboRef Vbo::create(GLenum type)
+{
+    return VboRef(new Vbo(type));
+}
+
+VboRef Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
 {
     float positions[] = { p1.x, p1.y, 0, p1.x, p2.y, 0, p2.x, p1.y, 0, p2.x, p2.y, 0 };
     float texcoords[] = { 0, 0, 0, 1, 1, 0, 1, 1 };
     
-    Vbo vbo(GL_TRIANGLE_STRIP);
-    vbo.set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 12));
-    vbo.set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 8));
+    VboRef vbo = Vbo::create(GL_TRIANGLE_STRIP);
+    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 12));
+    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 8));
     
     return vbo;
 }
 
-Vbo Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
+VboRef Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
 {
-    float positions[] = { p2.x,p2.y,p2.z, p2.x,p1.y,p2.z, p2.x,p1.y,p1.z, p2.x,p2.y,p1.z,   // +X
-                          p2.x,p2.y,p2.z, p2.x,p2.y,p1.z, p1.x,p2.y,p1.z, p1.x,p2.y,p2.z,   // +Y
-                          p2.x,p2.y,p2.z, p1.x,p2.y,p2.z, p1.x,p1.y,p2.z, p2.x,p1.y,p2.z,   // +Z
-                          p1.x,p2.y,p2.z, p1.x,p2.y,p1.z, p1.x,p1.y,p1.z, p1.x,p1.y,p2.z,   // -X
-                          p1.x,p1.y,p1.z, p2.x,p1.y,p1.z, p2.x,p1.y,p2.z, p1.x,p1.y,p2.z,   // -Y
-                          p2.x,p1.y,p1.z, p1.x,p1.y,p1.z, p1.x,p2.y,p1.z, p2.x,p2.y,p1.z }; // -Z
+    GLfloat positions[] = { p2.x,p2.y,p2.z, p2.x,p1.y,p2.z, p2.x,p1.y,p1.z, p2.x,p2.y,p1.z,   // +X
+                            p2.x,p2.y,p2.z, p2.x,p2.y,p1.z, p1.x,p2.y,p1.z, p1.x,p2.y,p2.z,   // +Y
+                            p2.x,p2.y,p2.z, p1.x,p2.y,p2.z, p1.x,p1.y,p2.z, p2.x,p1.y,p2.z,   // +Z
+                            p1.x,p2.y,p2.z, p1.x,p2.y,p1.z, p1.x,p1.y,p1.z, p1.x,p1.y,p2.z,   // -X
+                            p1.x,p1.y,p1.z, p2.x,p1.y,p1.z, p2.x,p1.y,p2.z, p1.x,p1.y,p2.z,   // -Y
+                            p2.x,p1.y,p1.z, p1.x,p1.y,p1.z, p1.x,p2.y,p1.z, p2.x,p2.y,p1.z }; // -Z
     
-    float normals[] = { 1, 0, 0,  1, 0, 0,  1, 0, 0,  1, 0, 0,
-                        0, 1, 0,  0, 1, 0,  0, 1, 0,  0, 1, 0,
-                        0, 0, 1,  0, 0, 1,  0, 0, 1,  0, 0, 1,
-                       -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0,
-                        0,-1, 0,  0,-1, 0,  0,-1, 0,  0,-1, 0,
-                        0, 0,-1,  0, 0,-1,  0, 0,-1,  0, 0,-1 };
+    GLfloat normals[] = { 1, 0, 0,  1, 0, 0,  1, 0, 0,  1, 0, 0,
+                          0, 1, 0,  0, 1, 0,  0, 1, 0,  0, 1, 0,
+                          0, 0, 1,  0, 0, 1,  0, 0, 1,  0, 0, 1,
+                         -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0,
+                          0,-1, 0,  0,-1, 0,  0,-1, 0,  0,-1, 0,
+                          0, 0,-1,  0, 0,-1,  0, 0,-1,  0, 0,-1 };
     
-    float texcoords[] = { 0,1, 1,1, 1,0, 0,0,
-                          1,1, 1,0, 0,0, 0,1,
-                          0,1, 1,1, 1,0, 0,0,
-                          1,1, 1,0, 0,0, 0,1,
-                          1,0, 0,0, 0,1, 1,1,
-                          1,0, 0,0, 0,1, 1,1 };
+    GLfloat texcoords[] = { 0,1, 1,1, 1,0, 0,0,
+                            1,1, 1,0, 0,0, 0,1,
+                            0,1, 1,1, 1,0, 0,0,
+                            1,1, 1,0, 0,0, 0,1,
+                            1,0, 0,0, 0,1, 1,1,
+                            1,0, 0,0, 0,1, 1,1 };
     
-    unsigned short indices[] = { 0, 1, 2, 0, 2, 3,
-                                 4, 5, 6, 4, 6, 7,
-                                 8, 9,10, 8,10,11,
-                                12,13,14,12,14,15,
-                                16,17,18,16,18,19,
-                                20,21,22,20,22,23 };
+    GLushort indices[] = { 0, 1, 2, 0, 2, 3,
+                           4, 5, 6, 4, 6, 7,
+                           8, 9,10, 8,10,11,
+                          12,13,14,12,14,15,
+                          16,17,18,16,18,19,
+                          20,21,22,20,22,23 };
     
-    Vbo vbo(GL_TRIANGLES);
-    vbo.set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 72));
-    vbo.set(Attribute::create("normal", 3)->setData(normals, sizeof(float) * 72));
-    vbo.set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 48));
-    vbo.set(Attribute::createIndex()->setData(indices, sizeof(unsigned short) * 36));
+    VboRef vbo = Vbo::create(GL_TRIANGLES);
+    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(GLfloat) * 72));
+    vbo->set(Attribute::create("normal", 3)->setData(normals, sizeof(GLfloat) * 72));
+    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(GLfloat) * 48));
+    vbo->set(Attribute::createIndex()->setData(indices, sizeof(GLushort) * 36));
 
     return vbo;
 }
-Vbo Vbo::createBox(const Vec3f &size)
+VboRef Vbo::createBox(const Vec3f &size)
 {
     return createBox(size * -0.5f, size * 0.5f);
 }
