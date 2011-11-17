@@ -8,18 +8,17 @@
 
 namespace cinder { namespace gl {
 
-using namespace std;
-
 class Vbo {
 public:
 
-    class Attribute {
+    class Attribute;
+
+    typedef std::shared_ptr< Attribute > AttributeRef;
+
+    class Attribute : public std::enable_shared_from_this<Attribute> {
     public:
 
         Attribute(){}
-        Attribute(const string &name, int size, int location = -1, GLenum usage = GL_STATIC_DRAW);
-        Attribute(const char *name, int size, int location = -1, GLenum usage = GL_STATIC_DRAW);
-        Attribute(const Attribute &attr);
         ~Attribute();
         
         void bufferData();
@@ -27,6 +26,7 @@ public:
         void bindAndEnable();
         
         GLenum getTarget() const { return m_target; }
+        GLenum getType() const { return m_type; }
         
         void   setUsage(GLenum usage){ m_usage = usage; m_data_dirty = true; }
         GLenum getUsage() const { return m_usage; }
@@ -34,24 +34,45 @@ public:
         void setLocation(int location){ m_location = location; }
         int  getLocation() const { return m_location; }
         
-        Attribute&    setData(Buffer data){ m_data = data; m_data_dirty = true; return *this; };
-        Attribute&    setData(const void* data, int data_length);
-//        Attribute&    setData(const vector<int> &data);
-        Attribute&    setData(const vector<float> &data);
-        Attribute&    setData(const vector<Vec2f> &data);
-        Attribute&    setData(const vector<Vec3f> &data);
+        AttributeRef  setData(Buffer data){ m_data = data; m_data_dirty = true; return shared_from_this(); };
+        AttributeRef  setData(const void* data, int data_length);
+        AttributeRef  setData(const std::vector<float> &data);
+        AttributeRef  setData(const std::vector<Vec2f> &data);
+        AttributeRef  setData(const std::vector<Vec3f> &data);
         const Buffer& getData() const { return m_data; }
         
-        const string& getName() const { return m_name; }
+        const std::string& getName() const { return m_name; }
         
-        int getLength() const { return m_data.getDataSize() / (m_size * 4); };
+        int getLength() const { return m_data.getDataSize() / (m_size * getTypeByteSize(m_type)); };
+        
+        static AttributeRef create(const std::string &name, int size, GLenum type = GL_FLOAT, GLenum usage = GL_STATIC_DRAW);
+        static AttributeRef create(const char *name, int size, GLenum type = GL_FLOAT, GLenum usage = GL_STATIC_DRAW);
+        static AttributeRef createIndex(GLenum usage = GL_STATIC_DRAW);
         
     protected:
+    
+        Attribute(const std::string &name, int size, GLenum type = GL_FLOAT, GLenum usage = GL_STATIC_DRAW);
+    
+        // TODO(ryan): This is a lot of code for a little function.. might be a better way
+        inline static size_t getTypeByteSize(GLenum type){
+            switch(type){
+                case GL_BYTE:
+                case GL_UNSIGNED_BYTE:
+                    return 1;
+                case GL_SHORT:
+                case GL_UNSIGNED_SHORT:
+                    return 2;
+                case GL_FLOAT:
+                case GL_FIXED:
+                    return 4;
+            }
+            return 0;
+        }
 
-        string m_name;
+        std::string m_name;
 
         GLuint m_buffer;
-        GLenum m_target, m_usage;
+        GLenum m_target, m_usage, m_type;
         
         int m_size, m_location;
         
@@ -59,7 +80,6 @@ public:
         bool   m_data_dirty;
 
     };
-    typedef shared_ptr< Attribute > AttributeRef;
 
     Vbo(){};
     Vbo(GLenum type);
@@ -67,8 +87,8 @@ public:
 
     void update();
     void draw();
-    void set(const Attribute &attr);
-    AttributeRef get(const string &name);
+    AttributeRef get(const std::string &name);
+    void set(AttributeRef attr);
     void assignLocations(GlslProg shader);
     
     static Vbo createPlane(const Vec2f &p1, const Vec2f &p2);
@@ -79,7 +99,7 @@ protected:
 
     GLenum m_type;
 
-    tr1::unordered_map< string, AttributeRef > m_attributes;
+    std::tr1::unordered_map< std::string, AttributeRef > m_attributes;
 
 };
 

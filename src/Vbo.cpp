@@ -2,6 +2,8 @@
 
 namespace cinder { namespace gl {
 
+using namespace std;
+
 
 Vbo::Vbo(GLuint type)
 : m_type(type)
@@ -11,9 +13,9 @@ Vbo::~Vbo()
 {
 }
 
-void Vbo::set(const Attribute &attr)
+void Vbo::set(AttributeRef attr)
 {
-    m_attributes[attr.getName()] = AttributeRef(new Attribute(attr));
+    m_attributes[attr->getName()] = attr;
 }
 Vbo::AttributeRef Vbo::get(const string &name)
 {
@@ -43,7 +45,7 @@ void Vbo::draw()
     if(m_attributes.count("index")){
         AttributeRef index = m_attributes["index"];
         index->bind();
-        glDrawElements(m_type, index->getData().getDataSize() / 2, GL_UNSIGNED_SHORT, 0); // TODO(ryan): This assumes the indices are 16bit ints
+        glDrawElements(m_type, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
     }
     else{
         glDrawArrays(m_type, 0, length);
@@ -51,25 +53,16 @@ void Vbo::draw()
 }
 
 
-Vbo::Attribute::Attribute(const string &name, int size, int location, GLenum usage)
+Vbo::Attribute::Attribute(const string &name, int size, GLenum type, GLenum usage)
 : m_buffer(0)
 , m_name(name)
 , m_size(size)
-, m_location(location)
+, m_type(type)
 , m_usage(usage)
+, m_location(-1)
 , m_data_dirty(false)
 {
     m_target = m_name == "index" ? GL_ELEMENT_ARRAY_BUFFER : GL_ARRAY_BUFFER;
-}
-Vbo::Attribute::Attribute(const char *name, int size, int location, GLenum usage)
-: Attribute(string(name), size, location, usage)
-{
-}
-Vbo::Attribute::Attribute(const Attribute &attr)
-: Attribute(attr.m_name, attr.m_size, attr.m_location)
-{
-    if(attr.m_data)
-        setData(attr.m_data);
 }
 Vbo::Attribute::~Attribute()
 {
@@ -79,7 +72,20 @@ Vbo::Attribute::~Attribute()
     }
 }
 
-Vbo::Attribute& Vbo::Attribute::setData(const void* data, int data_length)
+Vbo::AttributeRef Vbo::Attribute::create(const string &name, int size, GLenum type, GLenum usage)
+{
+    return AttributeRef(new Attribute(name, size, type, usage));
+}
+Vbo::AttributeRef Vbo::Attribute::create(const char *name, int size, GLenum type, GLenum usage)
+{
+    return AttributeRef(new Attribute(string(name), size, type, usage));
+}
+Vbo::AttributeRef Vbo::Attribute::createIndex(GLenum usage)
+{
+    return AttributeRef(new Attribute(string("index"), 1, GL_UNSIGNED_SHORT, usage));
+}
+
+Vbo::AttributeRef Vbo::Attribute::setData(const void* data, int data_length)
 {
     Buffer buf(data_length);
     buf.copyFrom(data, data_length);
@@ -89,15 +95,15 @@ Vbo::Attribute& Vbo::Attribute::setData(const void* data, int data_length)
 //{
 //    return setData(&data[0], sizeof(int) * data.size());
 //}
-Vbo::Attribute& Vbo::Attribute::setData(const vector<float> &data)
+Vbo::AttributeRef Vbo::Attribute::setData(const vector<float> &data)
 {
     return setData(&data[0], sizeof(float) * data.size());
 }
-Vbo::Attribute& Vbo::Attribute::setData(const vector<Vec2f> &data)
+Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec2f> &data)
 {
     return setData(&data[0], sizeof(float) * 2 * data.size());
 }
-Vbo::Attribute& Vbo::Attribute::setData(const vector<Vec3f> &data)
+Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec3f> &data)
 {
     return setData(&data[0], sizeof(float) * 3 * data.size());
 }
@@ -132,8 +138,8 @@ Vbo Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
     float texcoords[] = { 0, 0, 0, 1, 1, 0, 1, 1 };
     
     Vbo vbo(GL_TRIANGLE_STRIP);
-    vbo.set(Attribute("position", 3).setData(positions, sizeof(float) * 12));
-    vbo.set(Attribute("texcoord", 2).setData(texcoords, sizeof(float) * 8));
+    vbo.set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 12));
+    vbo.set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 8));
     
     return vbo;
 }
@@ -169,10 +175,10 @@ Vbo Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
                                 20,21,22,20,22,23 };
     
     Vbo vbo(GL_TRIANGLES);
-    vbo.set(Attribute("position", 3).setData(positions, sizeof(float) * 72));
-    vbo.set(Attribute("normal", 3).setData(normals, sizeof(float) * 72));
-    vbo.set(Attribute("texcoord", 2).setData(texcoords, sizeof(float) * 48));
-    vbo.set(Attribute("index", 2).setData(indices, sizeof(unsigned short) * 36));
+    vbo.set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 72));
+    vbo.set(Attribute::create("normal", 3)->setData(normals, sizeof(float) * 72));
+    vbo.set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 48));
+    vbo.set(Attribute::createIndex()->setData(indices, sizeof(unsigned short) * 36));
 
     return vbo;
 }
