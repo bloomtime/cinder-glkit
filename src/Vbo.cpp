@@ -51,6 +51,12 @@ void Vbo::draw()
         glDrawArrays(m_type, 0, length);
     }
 }
+void Vbo::draw(GlslProg shader)
+{
+    assignLocations(shader);
+    shader.bind();
+    draw();
+}
 
 
 Vbo::Attribute::Attribute(const string &name, int size, GLenum type, GLenum usage)
@@ -190,6 +196,24 @@ VboRef Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
 VboRef Vbo::createBox(const Vec3f &size)
 {
     return createBox(size * -0.5f, size * 0.5f);
+}
+
+VboRef Vbo::createWireBox(const Vec3f &p1, const Vec3f &p2)
+{
+    GLfloat positions[] = { p1.x,p1.y,p1.z, p2.x,p1.y,p1.z, p2.x,p2.y,p1.z, p1.x,p2.y,p1.z,
+                            p1.x,p1.y,p2.z, p2.x,p1.y,p2.z, p2.x,p2.y,p2.z, p1.x,p2.y,p2.z };
+    
+    GLushort indices[] = { 0,1, 1,2, 2,3, 3,0, 4,5, 5,6, 6,7, 7,4, 0,4, 3,7, 2,6, 1,5 };
+    
+    VboRef vbo = Vbo::create(GL_LINES);
+    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(GLfloat) * 24));
+    vbo->set(Attribute::createIndex()->setData(indices, sizeof(GLushort) * 24));
+    
+    return vbo;
+}
+VboRef Vbo::createWireBox(const Vec3f &size)
+{
+    return createWireBox(size * -0.5f, size * 0.5f);
 }
 
 

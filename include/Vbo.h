@@ -88,6 +88,7 @@ public:
 
     void update();
     void draw();
+    void draw(GlslProg shader);
     AttributeRef get(const std::string &name);
     void set(AttributeRef attr);
     void assignLocations(GlslProg shader);
@@ -96,6 +97,8 @@ public:
     static VboRef createPlane(const Vec2f &p1, const Vec2f &p2);
     static VboRef createBox(const Vec3f &p1, const Vec3f &p2);
     static VboRef createBox(const Vec3f &size);
+    static VboRef createWireBox(const Vec3f &p1, const Vec3f &p2);
+    static VboRef createWireBox(const Vec3f &size);
 
 protected:
 
