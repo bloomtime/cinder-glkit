@@ -95,6 +95,7 @@ public:
     
     static VboRef create(GLenum type);
     static VboRef createPlane(const Vec2f &p1, const Vec2f &p2);
+    static VboRef createPlane(const Vec2f &size);
     static VboRef createBox(const Vec3f &p1, const Vec3f &p2);
     static VboRef createBox(const Vec3f &size);
     static VboRef createWireBox(const Vec3f &p1, const Vec3f &p2);

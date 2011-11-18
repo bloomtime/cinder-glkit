@@ -97,10 +97,6 @@ Vbo::AttributeRef Vbo::Attribute::setData(const void* data, int data_length)
     buf.copyFrom(data, data_length);
     return setData(buf);
 }
-//Vbo::Attribute& Vbo::Attribute::setData(const vector<int> &data)
-//{
-//    return setData(&data[0], sizeof(int) * data.size());
-//}
 Vbo::AttributeRef Vbo::Attribute::setData(const vector<float> &data)
 {
     return setData(&data[0], sizeof(float) * data.size());
@@ -153,6 +149,10 @@ VboRef Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
     vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 8));
     
     return vbo;
+}
+VboRef Vbo::createPlane(const Vec2f &size)
+{
+    return createPlane(size * -0.5f, size * 0.5f);
 }
 
 VboRef Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
