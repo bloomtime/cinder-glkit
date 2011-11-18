@@ -26,10 +26,6 @@
 		947F492E1471C0C9002937B9 /* ripple.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F491F1471A7D9002937B9 /* ripple.vsh */; };
 		947F492F1471C0CC002937B9 /* ripple.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F49221471A7EC002937B9 /* ripple.fsh */; };
 		94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D3A4621469E1CD007563C4 /* DemoSketch.cpp */; };
-		94F213BA1475A3B300D885ED /* color.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 94F213B81475A3B300D885ED /* color.fsh */; };
-		94F213BB1475A3B300D885ED /* color.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 94F213B91475A3B300D885ED /* color.vsh */; };
-		94F213BF1475A3E700D885ED /* texture.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 94F213BD1475A3E700D885ED /* texture.fsh */; };
-		94F213C01475A3E700D885ED /* texture.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 94F213BE1475A3E700D885ED /* texture.vsh */; };
 		94F213C11475A94200D885ED /* color.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B81475A3B300D885ED /* color.fsh */; };
 		94F213C21475A94200D885ED /* color.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B91475A3B300D885ED /* color.vsh */; };
 		94F213C31475A94200D885ED /* texture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213BE1475A3E700D885ED /* texture.vsh */; };
@@ -245,9 +241,9 @@
 				94F213C21475A94200D885ED /* color.vsh in Resources */,
 				94F213C31475A94200D885ED /* texture.vsh in Resources */,
 				94F213C41475A94200D885ED /* texture.fsh in Resources */,
-				9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */,
 				947F492E1471C0C9002937B9 /* ripple.vsh in Resources */,
 				947F492F1471C0CC002937B9 /* ripple.fsh in Resources */,
+				9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */,
 				94551A351471D88000D74C18 /* touch_32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,10 +261,6 @@
 				94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */,
 				947F492C1471B63D002937B9 /* CinderGLSketch.mm in Sources */,
 				94551A381471EC5700D74C18 /* Vbo.cpp in Sources */,
-				94F213BA1475A3B300D885ED /* color.fsh in Sources */,
-				94F213BB1475A3B300D885ED /* color.vsh in Sources */,
-				94F213BF1475A3E700D885ED /* texture.fsh in Sources */,
-				94F213C01475A3E700D885ED /* texture.vsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
