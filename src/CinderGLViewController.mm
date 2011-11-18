@@ -87,7 +87,9 @@ using namespace ci;
     if(m_sketch){
         GLKView *view = (GLKView *)self.view;
         
-        m_sketch->setSize(Vec2i(view.drawableWidth, view.drawableHeight));
+        Vec2i size(view.drawableWidth, view.drawableHeight);
+        if(size != m_sketch->getSize())
+            m_sketch->setSize(size);
         
         if(m_sketch->m_needs_setup){
             m_sketch->setup();
