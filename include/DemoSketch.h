@@ -31,6 +31,6 @@ public:
     CameraOrtho m_camera;
     CameraPersp m_camera_persp;
     
-    const static int PIXEL_SCALE = 2;
+    const static int PIXEL_SCALE = 4;
     
 };
