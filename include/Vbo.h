@@ -27,25 +27,25 @@ public:
         void bind();
         void bindAndEnable();
         
-        GLenum getTarget() const { return m_target; }
-        GLenum getType() const { return m_type; }
+        GLenum getTarget() const { return mTarget; }
+        GLenum getType() const { return mType; }
         
-        void   setUsage(GLenum usage){ m_usage = usage; m_data_dirty = true; }
-        GLenum getUsage() const { return m_usage; }
+        void   setUsage(GLenum usage){ mUsage = usage; mDataDirty = true; }
+        GLenum getUsage() const { return mUsage; }
         
-        void setLocation(int location){ m_location = location; }
-        int  getLocation() const { return m_location; }
+        void setLocation(int location){ mLocation = location; }
+        int  getLocation() const { return mLocation; }
         
-        AttributeRef  setData(Buffer data){ m_data = data; m_data_dirty = true; return shared_from_this(); };
+        AttributeRef  setData(Buffer data){ mData = data; mDataDirty = true; return shared_from_this(); };
         AttributeRef  setData(const void* data, int data_length);
         AttributeRef  setData(const std::vector<float> &data);
         AttributeRef  setData(const std::vector<Vec2f> &data);
         AttributeRef  setData(const std::vector<Vec3f> &data);
-        const Buffer& getData() const { return m_data; }
+        const Buffer& getData() const { return mData; }
         
-        const std::string& getName() const { return m_name; }
+        const std::string& getName() const { return mName; }
         
-        int getLength() const { return m_data.getDataSize() / (m_size * getTypeByteSize(m_type)); };
+        int getLength() const { return mData.getDataSize() / (mSize * getTypeByteSize(mType)); };
         
         static AttributeRef create(const std::string &name, int size, GLenum type = GL_FLOAT, GLenum usage = GL_STATIC_DRAW);
         static AttributeRef create(const char *name, int size, GLenum type = GL_FLOAT, GLenum usage = GL_STATIC_DRAW);
@@ -71,19 +71,18 @@ public:
             return 0;
         }
 
-        std::string m_name;
+        std::string mName;
 
-        GLuint m_buffer;
-        GLenum m_target, m_usage, m_type;
+        GLuint mBuffer;
+        GLenum mTarget, mUsage, mType;
         
-        int m_size, m_location;
+        int mSize, mLocation;
         
-        Buffer m_data;
-        bool   m_data_dirty;
+        Buffer mData;
+        bool   mDataDirty;
 
     };
 
-    Vbo(){};
     ~Vbo();
 
     void update();
@@ -105,9 +104,9 @@ protected:
 
     Vbo(GLenum type);
 
-    GLenum m_type;
+    GLenum mType;
 
-    std::tr1::unordered_map< std::string, AttributeRef > m_attributes;
+    std::tr1::unordered_map< std::string, AttributeRef > mAttributes;
 
 };
 

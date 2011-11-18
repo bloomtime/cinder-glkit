@@ -14,8 +14,8 @@ class CinderGLSketch {
 public:
 
     CinderGLSketch()
-    : m_needs_setup(true)
-    , m_timer(true)
+    : mNeedsSetup(true)
+    , mTimer(true)
     {};
     
     virtual ~CinderGLSketch(){};
@@ -25,20 +25,20 @@ public:
     virtual void update(){};
     virtual void draw(const Area &area){};
     
-    const Vec2i& getSize() const { return m_size; }
-    void         setSize(const Vec2i &size){ m_size = size; }
-    float        getAspectRatio() const { return (float)m_size.x / (float)m_size.y; }
+    const Vec2i& getSize() const { return mSize; }
+    void         setSize(const Vec2i &size){ mSize = size; }
+    float        getAspectRatio() const { return (float)mSize.x / (float)mSize.y; }
     
-    double getElapsedSeconds() const { return m_timer.getSeconds(); }
+    double getElapsedSeconds() const { return mTimer.getSeconds(); }
     
     ostream& console(){ return cout; }
     
-    bool m_needs_setup;
+    bool mNeedsSetup;
 
 protected:
 
-    Vec2i m_size;
-    Timer m_timer;
+    Vec2i mSize;
+    Timer mTimer;
 
 };
 

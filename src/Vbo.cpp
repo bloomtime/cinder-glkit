@@ -6,7 +6,7 @@ using namespace std;
 
 
 Vbo::Vbo(GLuint type)
-: m_type(type)
+: mType(type)
 {
 }
 Vbo::~Vbo()
@@ -15,19 +15,19 @@ Vbo::~Vbo()
 
 void Vbo::set(AttributeRef attr)
 {
-    m_attributes[attr->getName()] = attr;
+    mAttributes[attr->getName()] = attr;
 }
 Vbo::AttributeRef Vbo::get(const string &name)
 {
-    auto iter = m_attributes.find(name);
-    if(iter != m_attributes.end())
+    auto iter = mAttributes.find(name);
+    if(iter != mAttributes.end())
         return iter->second;
     return AttributeRef();
 }
 
 void Vbo::assignLocations(GlslProg shader)
 {
-    for(auto pair : m_attributes){
+    for(auto pair : mAttributes){
         pair.second->setLocation(shader.getAttribLocation(pair.first));
     }
 }
@@ -35,20 +35,20 @@ void Vbo::assignLocations(GlslProg shader)
 void Vbo::draw()
 {
     int length = numeric_limits<int>::max();
-    for(auto pair : m_attributes){
+    for(auto pair : mAttributes){
         AttributeRef attr = pair.second;
         if(attr->getTarget() == GL_ARRAY_BUFFER && attr->getLocation() >= 0){
             attr->bindAndEnable();
             length = min(length, attr->getLength());
         }
     }
-    if(m_attributes.count("index")){
-        AttributeRef index = m_attributes["index"];
+    if(mAttributes.count("index")){
+        AttributeRef index = mAttributes["index"];
         index->bind();
-        glDrawElements(m_type, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
+        glDrawElements(mType, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
     }
     else{
-        glDrawArrays(m_type, 0, length);
+        glDrawArrays(mType, 0, length);
     }
 }
 void Vbo::draw(GlslProg shader)
@@ -60,21 +60,21 @@ void Vbo::draw(GlslProg shader)
 
 
 Vbo::Attribute::Attribute(const string &name, int size, GLenum type, GLenum usage)
-: m_buffer(0)
-, m_name(name)
-, m_size(size)
-, m_type(type)
-, m_usage(usage)
-, m_location(-1)
-, m_data_dirty(false)
+: mBuffer(0)
+, mName(name)
+, mSize(size)
+, mType(type)
+, mUsage(usage)
+, mLocation(-1)
+, mDataDirty(false)
 {
-    m_target = m_name == "index" ? GL_ELEMENT_ARRAY_BUFFER : GL_ARRAY_BUFFER;
+    mTarget = mName == "index" ? GL_ELEMENT_ARRAY_BUFFER : GL_ARRAY_BUFFER;
 }
 Vbo::Attribute::~Attribute()
 {
-    if(m_buffer){
-        glDeleteBuffers(1, &m_buffer);
-        m_buffer = 0;
+    if(mBuffer){
+        glDeleteBuffers(1, &mBuffer);
+        mBuffer = 0;
     }
 }
 
@@ -112,25 +112,25 @@ Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec3f> &data)
 
 void Vbo::Attribute::bufferData()
 {
-    if(!m_buffer)
-        glGenBuffers(1, &m_buffer);
-    glBindBuffer(m_target, m_buffer);
-    glBufferData(m_target, m_data.getDataSize(), m_data.getData(), m_usage);
-    m_data_dirty = false;
+    if(!mBuffer)
+        glGenBuffers(1, &mBuffer);
+    glBindBuffer(mTarget, mBuffer);
+    glBufferData(mTarget, mData.getDataSize(), mData.getData(), mUsage);
+    mDataDirty = false;
 }
 
 void Vbo::Attribute::bind()
 {
-    if(m_data_dirty)
+    if(mDataDirty)
         bufferData();
-    glBindBuffer(m_target, m_buffer);
+    glBindBuffer(mTarget, mBuffer);
 }
 
 void Vbo::Attribute::bindAndEnable()
 {
     bind();
-    glVertexAttribPointer(m_location, m_size, GL_FLOAT, false, 0, 0);
-    glEnableVertexAttribArray(m_location);
+    glVertexAttribPointer(mLocation, mSize, GL_FLOAT, false, 0, 0);
+    glEnableVertexAttribArray(mLocation);
 }
 
 

@@ -15,7 +15,7 @@ using namespace ci;
 {
     self = [super init];
     if(self){
-        self->m_sketch = NULL;
+        self->mSketch = NULL;
     }
     return self;
 }
@@ -41,9 +41,8 @@ using namespace ci;
 {    
     [super viewDidUnload];
     
-    if(m_sketch){
-        m_sketch->tearDown();
-    }
+    if(mSketch)
+        mSketch->tearDown();
     
     if([EAGLContext currentContext] == self.context){
         [EAGLContext setCurrentContext: nil];
@@ -68,15 +67,15 @@ using namespace ci;
 
 - (void)setSketch:(CinderGLSketch *)sketch
 {
-    m_sketch = sketch;
+    mSketch = sketch;
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)update
 {
-    if(m_sketch){
-        m_sketch->update();
+    if(mSketch){
+        mSketch->update();
     }
 }
 
@@ -84,19 +83,19 @@ using namespace ci;
 {
     [EAGLContext setCurrentContext: self.context];
     
-    if(m_sketch){
+    if(mSketch){
         GLKView *view = (GLKView *)self.view;
         
         Vec2i size(view.drawableWidth, view.drawableHeight);
-        if(size != m_sketch->getSize())
-            m_sketch->setSize(size);
+        if(size != mSketch->getSize())
+            mSketch->setSize(size);
         
-        if(m_sketch->m_needs_setup){
-            m_sketch->setup();
-            m_sketch->m_needs_setup = false;
+        if(mSketch->mNeedsSetup){
+            mSketch->setup();
+            mSketch->mNeedsSetup = false;
         }
         
-        m_sketch->draw(Area(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
+        mSketch->draw(Area(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height));
     }
 }
 

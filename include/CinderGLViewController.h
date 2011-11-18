@@ -6,7 +6,7 @@
 using namespace ci;
 
 @interface CinderGLViewController : GLKViewController {
-    CinderGLSketch *m_sketch;
+    CinderGLSketch *mSketch;
 }
 @property (strong, nonatomic) EAGLContext *context;
 
