@@ -12,7 +12,7 @@
 
 using namespace ci;
 
-class DemoSketch : public CinderGLSketch {
+class CubeRippleSketch : public CinderGLSketch {
 public:
     
     void setup();

@@ -10,6 +10,7 @@
 		94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED114771CFD00769513 /* CinderGLSketch.mm */; };
 		94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED214771CFD00769513 /* CinderGLViewController.mm */; };
 		94147ED614771CFD00769513 /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED314771CFD00769513 /* Vbo.cpp */; };
+		94147EDC14773F2200769513 /* DynamicVboSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147EDB14773F2200769513 /* DynamicVboSketch.cpp */; };
 		9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F86F145F2A3B00C76F9E /* UIKit.framework */; };
 		9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F871145F2A3B00C76F9E /* Foundation.framework */; };
 		9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F873145F2A3B00C76F9E /* CoreGraphics.framework */; };
@@ -25,7 +26,7 @@
 		9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* CinderGLView.xib */; };
 		947F492E1471C0C9002937B9 /* ripple.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F491F1471A7D9002937B9 /* ripple.vsh */; };
 		947F492F1471C0CC002937B9 /* ripple.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 947F49221471A7EC002937B9 /* ripple.fsh */; };
-		94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D3A4621469E1CD007563C4 /* DemoSketch.cpp */; };
+		94D3A4631469E1CD007563C4 /* CubeRippleSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94D3A4621469E1CD007563C4 /* CubeRippleSketch.cpp */; };
 		94F213C11475A94200D885ED /* color.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B81475A3B300D885ED /* color.fsh */; };
 		94F213C21475A94200D885ED /* color.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B91475A3B300D885ED /* color.vsh */; };
 		94F213C31475A94200D885ED /* texture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213BE1475A3E700D885ED /* texture.vsh */; };
@@ -41,6 +42,8 @@
 		94147ED114771CFD00769513 /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
 		94147ED214771CFD00769513 /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
 		94147ED314771CFD00769513 /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
+		94147EDB14773F2200769513 /* DynamicVboSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynamicVboSketch.cpp; path = src/DynamicVboSketch.cpp; sourceTree = SOURCE_ROOT; };
+		94147EDD14773F3700769513 /* DynamicVboSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicVboSketch.h; sourceTree = "<group>"; };
 		9442F86B145F2A3B00C76F9E /* LoopApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoopApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9442F86F145F2A3B00C76F9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9442F871145F2A3B00C76F9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,8 +63,8 @@
 		9464C4BD145F2F6300E019B6 /* CinderGLView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinderGLView.xib; sourceTree = SOURCE_ROOT; };
 		947F491F1471A7D9002937B9 /* ripple.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple.vsh; sourceTree = "<group>"; };
 		947F49221471A7EC002937B9 /* ripple.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple.fsh; sourceTree = "<group>"; };
-		947F492D1471B8A9002937B9 /* DemoSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoSketch.h; sourceTree = "<group>"; };
-		94D3A4621469E1CD007563C4 /* DemoSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DemoSketch.cpp; sourceTree = "<group>"; };
+		947F492D1471B8A9002937B9 /* CubeRippleSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubeRippleSketch.h; sourceTree = "<group>"; };
+		94D3A4621469E1CD007563C4 /* CubeRippleSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubeRippleSketch.cpp; sourceTree = "<group>"; };
 		94F213B81475A3B300D885ED /* color.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = color.fsh; sourceTree = "<group>"; };
 		94F213B91475A3B300D885ED /* color.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = color.vsh; sourceTree = "<group>"; };
 		94F213BD1475A3E700D885ED /* texture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture.fsh; sourceTree = "<group>"; };
@@ -183,7 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				9442F89B145F2BE100C76F9E /* AppDelegate.h */,
-				947F492D1471B8A9002937B9 /* DemoSketch.h */,
+				94147EDD14773F3700769513 /* DynamicVboSketch.h */,
+				947F492D1471B8A9002937B9 /* CubeRippleSketch.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -206,7 +210,8 @@
 			children = (
 				9442F8A2145F2BE100C76F9E /* main.m */,
 				9442F8A1145F2BE100C76F9E /* AppDelegate.mm */,
-				94D3A4621469E1CD007563C4 /* DemoSketch.cpp */,
+				94147EDB14773F2200769513 /* DynamicVboSketch.cpp */,
+				94D3A4621469E1CD007563C4 /* CubeRippleSketch.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -289,10 +294,11 @@
 			files = (
 				9442F8A6145F2BE100C76F9E /* AppDelegate.mm in Sources */,
 				9442F8A7145F2BE100C76F9E /* main.m in Sources */,
-				94D3A4631469E1CD007563C4 /* DemoSketch.cpp in Sources */,
+				94D3A4631469E1CD007563C4 /* CubeRippleSketch.cpp in Sources */,
 				94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */,
 				94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */,
 				94147ED614771CFD00769513 /* Vbo.cpp in Sources */,
+				94147EDC14773F2200769513 /* DynamicVboSketch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

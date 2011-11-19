@@ -1,9 +1,9 @@
-#include "DemoSketch.h"
+#include "CubeRippleSketch.h"
 
 #include "cinder/ImageIO.h"
 #include "cinder/app/App.h"
 
-void DemoSketch::setup()
+void CubeRippleSketch::setup()
 {
     // create framebuffers
     m_fbo_size = getSize() / PIXEL_SCALE;
@@ -41,12 +41,12 @@ void DemoSketch::setup()
     glEnable(GL_DEPTH_TEST);
 }
 
-void DemoSketch::update()
+void CubeRippleSketch::update()
 {
     // update
 }
 
-void DemoSketch::draw(const Area &area)
+void CubeRippleSketch::draw(const Area &area)
 {
     // Render to backbuffer
     {
