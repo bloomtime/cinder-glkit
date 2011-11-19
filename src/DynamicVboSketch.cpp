@@ -14,7 +14,7 @@ void DynamicVboSketch::setup()
         cout << "Shader Compile Failed: " << e.what();
     }
 
-    m_camera.setOrtho( 0, 1, -1, 1, -1, 1);
+    m_camera.setOrtho(0, 1, -1, 1, -1, 1);
 }
 
 void DynamicVboSketch::update()
@@ -33,6 +33,8 @@ void DynamicVboSketch::update()
 void DynamicVboSketch::draw(const Area &area)
 {
     gl::clear(ColorA(1, 1, 0, 1));
+    
+    glLineWidth(4);
     
     m_color_shader.bind();
     m_color_shader.uniform("u_mvp_matrix", m_camera.getProjectionMatrix() * m_camera.getModelViewMatrix());
