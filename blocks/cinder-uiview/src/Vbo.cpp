@@ -34,21 +34,25 @@ void Vbo::assignLocations(GlslProg shader)
 
 void Vbo::draw()
 {
+    bool data_bound = false;
     int length = numeric_limits<int>::max();
     for(auto pair : mAttributes){
         AttributeRef attr = pair.second;
-        if(attr->getTarget() == GL_ARRAY_BUFFER && attr->getLocation() >= 0){
+        if(attr->getTarget() == GL_ARRAY_BUFFER && attr->getLocation() >= 0 && attr->getData()){
             attr->bindAndEnable();
+            data_bound = true;
             length = min(length, attr->getLength());
         }
     }
-    if(mAttributes.count("index")){
-        AttributeRef index = mAttributes["index"];
-        index->bind();
-        glDrawElements(mType, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
-    }
-    else{
-        glDrawArrays(mType, 0, length);
+    if(data_bound){
+        if(mAttributes.count("index")){
+            AttributeRef index = mAttributes["index"];
+            index->bind();
+            glDrawElements(mType, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
+        }
+        else{
+            glDrawArrays(mType, 0, length);
+        }
     }
 }
 void Vbo::draw(GlslProg shader)

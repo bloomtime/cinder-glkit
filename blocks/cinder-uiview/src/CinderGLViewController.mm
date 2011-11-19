@@ -74,6 +74,8 @@ using namespace ci;
 
 - (void)update
 {
+    [EAGLContext setCurrentContext: self.context];
+
     if(mSketch){
         mSketch->update();
     }
