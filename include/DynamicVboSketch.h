@@ -3,33 +3,27 @@
 #include "CinderGLSketch.h"
 
 #include "cinder/gl/GlslProg.h"
-#include "cinder/gl/Fbo.h"
-#include "cinder/gl/Texture.h"
 #include "Vbo.h"
 
 #include "cinder/Vector.h"
 #include "cinder/Camera.h"
+#include "cinder/Perlin.h"
 
 using namespace ci;
 
-class DemoSketch : public CinderGLSketch {
+class DynamicVboSketch : public CinderGLSketch {
 public:
     
     void setup();
     void update();
     void draw(const Area &area);
     
-    gl::Fbo m_fbo_read, m_fbo_write;
-    Vec2i   m_fbo_size;
+    gl::VboRef m_vbo;
     
-    gl::Vbo m_plane;
-    
-    gl::GlslProg m_shader;
-    
-    gl::Texture m_touch_tex;
+    gl::GlslProg m_color_shader;
     
     CameraOrtho m_camera;
     
-    const static int PIXEL_SCALE = 2;
+    Perlin m_perlin;
     
 };

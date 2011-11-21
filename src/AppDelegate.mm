@@ -1,7 +1,8 @@
 #import "AppDelegate.h"
 #import "CinderGLViewController.h"
 
-#include "DemoSketch.h"
+#include "CubeRippleSketch.h"
+#include "DynamicVboSketch.h"
 
 @implementation AppDelegate
 
@@ -15,8 +16,7 @@
 
     self.view_controller = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
                                                                     bundle: nil];
-                                                                    
-    DemoSketch *sketch = new DemoSketch();
+    DynamicVboSketch *sketch = new DynamicVboSketch();
     [self.view_controller setSketch: sketch];
 
     self.window.rootViewController = self.view_controller;
