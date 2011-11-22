@@ -34,7 +34,7 @@ public:
     virtual void touchesMoved(app::TouchEvent event){}
     virtual void touchesEnded(app::TouchEvent event){}
     
-    const std::vector<app::TouchEvent::Touch>& getActiveTouches(){ return mActiveTouches; }
+    const std::vector<app::TouchEvent::Touch>& getActiveTouches() const { return mActiveTouches; }
     void setActiveTouches(std::vector<app::TouchEvent::Touch> touches){ mActiveTouches = touches; }
     
     std::ostream& console(){ return std::cout; }

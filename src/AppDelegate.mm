@@ -7,19 +7,18 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize view_controller = _view_controller;
+@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    CGRect screen_bounds = [[UIScreen mainScreen] bounds];
-    self.window = [[UIWindow alloc] initWithFrame: screen_bounds];
+    self.window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
 
-    self.view_controller = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
-                                                                    bundle: nil];
+    self.viewController = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
+                                                                   bundle: nil];
     DynamicVboSketch *sketch = new DynamicVboSketch();
-    [self.view_controller setSketch: sketch];
+    [self.viewController setSketch: sketch];
 
-    self.window.rootViewController = self.view_controller;
+    self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
     return YES;

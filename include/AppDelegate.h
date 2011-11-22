@@ -5,6 +5,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) CinderGLViewController *view_controller;
+@property (strong, nonatomic) CinderGLViewController *viewController;
 
 @end
