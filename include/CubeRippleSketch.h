@@ -22,13 +22,13 @@ public:
     gl::Fbo m_fbo_read, m_fbo_write;
     Vec2i   m_fbo_size;
     
-    gl::VboRef m_plane, m_box;
+    gl::VboRef m_plane, m_touch_plane, m_box;
     
     gl::GlslProg m_ripple_shader, m_tex_shader, m_color_shader;
     
     gl::Texture m_touch_tex;
     
-    CameraOrtho m_camera;
+    CameraOrtho m_camera_unit, m_camera_fbo;
     CameraPersp m_camera_persp;
     
     const static int PIXEL_SCALE = 4;

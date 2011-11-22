@@ -15,7 +15,7 @@
 
     self.viewController = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
                                                                    bundle: nil];
-    DynamicVboSketch *sketch = new DynamicVboSketch();
+    CubeRippleSketch *sketch = new CubeRippleSketch();
     [self.viewController setSketch: sketch];
 
     self.window.rootViewController = self.viewController;

@@ -33,11 +33,13 @@ void CubeRippleSketch::setup()
      
     m_touch_tex = gl::Texture(loadImage(app::loadResource("touch_32.png")));
 
-    m_camera.setOrtho(0, 1, 0, 1, -1, 1);
+    m_camera_unit.setOrtho(0, 1, 0, 1, -1, 1);
+    m_camera_fbo.setOrtho(0, m_fbo_size.x, m_fbo_size.y, 0, -1, 1);
     m_camera_persp.setPerspective(60, getAspectRatio(), 0.01f, 10.0f);
     m_camera_persp.lookAt(Vec3f(0, 0, -3), Vec3f::zero(), Vec3f::yAxis());
 
     m_plane = gl::Vbo::createPlane(Vec2f::zero(), Vec2f::one());
+    m_touch_plane = gl::Vbo::createPlane(Vec2f(200.0f, 200.0f));
     m_box = gl::Vbo::createWireBox(Vec3f::one());
     
     glEnable(GL_DEPTH_TEST);
@@ -62,7 +64,7 @@ void CubeRippleSketch::draw(const Area &area)
         float time = getElapsedSeconds();
         
         m_ripple_shader.bind();
-        m_ripple_shader.uniform("u_mvp_matrix", m_camera.getProjectionMatrix() * m_camera.getModelViewMatrix());
+        m_ripple_shader.uniform("u_mvp_matrix", m_camera_unit.getProjectionMatrix() * m_camera_unit.getModelViewMatrix());
         m_ripple_shader.uniform("u_time", time);
         m_ripple_shader.uniform("u_resolution", Vec2f(m_fbo_write.getSize()));
         m_ripple_shader.uniform("u_texture_prev", 0);
@@ -81,6 +83,24 @@ void CubeRippleSketch::draw(const Area &area)
                                                    Matrix44f::createRotation(axis.normalized(), time * 0.5f));
             m_color_shader.uniform("u_color", Vec4f(1,1,1,0.25));
             m_box->draw(m_color_shader);
+            
+            // Draw touch halos
+            if(getActiveTouches().size() > 0){
+                gl::SaveTextureBindState save_tex(GL_TEXTURE_2D);
+            
+                m_touch_tex.bind();
+                m_tex_shader.bind();
+                m_tex_shader.uniform("u_texture", 0);
+                
+                Matrix44f mvp_matrix = m_camera_fbo.getProjectionMatrix() * m_camera_fbo.getModelViewMatrix() *
+                                       Matrix44f::createScale(Vec2f(m_fbo_write.getSize()) / Vec2f(getSize()));
+                
+                for(auto touch : getActiveTouches()){
+                    Vec3f touch_pos(touch.getX(), touch.getY(), 0);
+                    m_tex_shader.uniform("u_mvp_matrix", mvp_matrix * Matrix44f::createTranslation(touch_pos));
+                    m_touch_plane->draw(m_tex_shader);
+                }
+            }
         }
     }
     
@@ -96,7 +116,7 @@ void CubeRippleSketch::draw(const Area &area)
     m_fbo_read.bindTexture();
     
     m_tex_shader.bind();
-    m_tex_shader.uniform("u_mvp_matrix", m_camera.getProjectionMatrix() * m_camera.getModelViewMatrix());
+    m_tex_shader.uniform("u_mvp_matrix", m_camera_unit.getProjectionMatrix() * m_camera_unit.getModelViewMatrix());
     m_tex_shader.uniform("u_texture", 0);
     m_plane->draw(m_tex_shader);
 }

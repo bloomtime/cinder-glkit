@@ -10,6 +10,7 @@ using namespace ci;
     CinderGLSketch *mSketch;
     std::tr1::unordered_map< UITouch*, uint32_t > mTouchIds;
 }
+
 @property (strong, nonatomic) EAGLContext *context;
 
 - (void)setSketch:(CinderGLSketch *)sketch;
