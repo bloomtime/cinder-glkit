@@ -11,7 +11,7 @@
 
 using namespace ci;
 
-class «PREFIX»Sketch : public CinderGLSketch {
+class Prefix_PrefixSketch : public CinderGLSketch {
 public:
     
     void setup();
