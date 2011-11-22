@@ -11,7 +11,7 @@
 
 using namespace ci;
 
-class DynamicVboSketch : public CinderGLSketch {
+class «PREFIX»Sketch : public CinderGLSketch {
 public:
     
     void setup();

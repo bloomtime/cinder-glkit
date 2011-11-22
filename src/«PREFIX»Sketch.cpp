@@ -1,11 +1,11 @@
-#include "DynamicVboSketch.h"
+#include "«PREFIX»Sketch.h"
 
 #include "cinder/ImageIO.h"
 #include "cinder/app/App.h"
 
 using namespace std;
 
-void DynamicVboSketch::setup()
+void «PREFIX»Sketch::setup()
 {
     m_vbo = gl::Vbo::create(GL_LINE_STRIP);
     m_vbo->set(gl::Vbo::Attribute::create("position", 3));
@@ -19,7 +19,7 @@ void DynamicVboSketch::setup()
     m_camera.setOrtho(0, 1, -1, 1, -1, 1);
 }
 
-void DynamicVboSketch::update()
+void «PREFIX»Sketch::update()
 {
     float time = getElapsedSeconds() * 0.2f;
 
@@ -32,7 +32,7 @@ void DynamicVboSketch::update()
     m_vbo->get("position")->setData(positions);
 }
 
-void DynamicVboSketch::draw(const Area &area)
+void «PREFIX»Sketch::draw(const Area &area)
 {
     gl::clear(ColorA(1, 1, 0, 1));
     
