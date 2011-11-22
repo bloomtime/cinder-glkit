@@ -1,7 +1,6 @@
 #import "AppDelegate.h"
 #import "CinderGLViewController.h"
 
-#include "CubeRippleSketch.h"
 #include "DynamicVboSketch.h"
 
 @implementation AppDelegate
@@ -15,8 +14,7 @@
 
     self.viewController = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
                                                                    bundle: nil];
-    CubeRippleSketch *sketch = new CubeRippleSketch();
-    [self.viewController setSketch: sketch];
+    [self.viewController setSketch: new DynamicVboSketch()];
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

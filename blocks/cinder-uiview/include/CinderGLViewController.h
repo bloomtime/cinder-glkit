@@ -13,7 +13,7 @@ using namespace ci;
 
 @property (strong, nonatomic) EAGLContext *context;
 
-- (void)setSketch:(CinderGLSketch *)sketch;
+- (void)setSketch:(CinderGLSketch*)sketch;
 
 - (uint32_t)addTouchToMap:(UITouch*)touch;
 - (void)removeTouchFromMap:(UITouch*)touch;
