@@ -1,7 +1,7 @@
 #import "AppDelegate.h"
 #import "CinderGLViewController.h"
 
-#include "Prefix_PrefixSketch.h"
+#include "CinderGLKitTemplateSketch.h"
 
 @implementation AppDelegate
 
@@ -14,7 +14,7 @@
 
     self.viewController = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
                                                                    bundle: nil];
-    [self.viewController setSketch: new Prefix_PrefixSketch()];
+    [self.viewController setSketch: new CinderGLKitTemplateSketch()];
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

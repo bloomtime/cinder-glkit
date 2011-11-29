@@ -10,7 +10,7 @@
 		94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED114771CFD00769513 /* CinderGLSketch.mm */; };
 		94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED214771CFD00769513 /* CinderGLViewController.mm */; };
 		94147ED614771CFD00769513 /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED314771CFD00769513 /* Vbo.cpp */; };
-		94147EDC14773F2200769513 /* Prefix_PrefixSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147EDB14773F2200769513 /* Prefix_PrefixSketch.cpp */; };
+		94147EDC14773F2200769513 /* CinderGLKitTemplateSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */; };
 		9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F86F145F2A3B00C76F9E /* UIKit.framework */; };
 		9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F871145F2A3B00C76F9E /* Foundation.framework */; };
 		9442F874145F2A3B00C76F9E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F873145F2A3B00C76F9E /* CoreGraphics.framework */; };
@@ -36,16 +36,16 @@
 		94147ED114771CFD00769513 /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
 		94147ED214771CFD00769513 /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
 		94147ED314771CFD00769513 /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
-		94147EDB14773F2200769513 /* Prefix_PrefixSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Prefix_PrefixSketch.cpp"; path = "src/Prefix_PrefixSketch.cpp"; sourceTree = SOURCE_ROOT; };
-		94147EDD14773F3700769513 /* Prefix_PrefixSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Prefix_PrefixSketch.h"; sourceTree = "<group>"; };
-		9442F86B145F2A3B00C76F9E /* Prefix_Prefix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prefix_Prefix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "CinderGLKitTemplateSketch.cpp"; path = "src/CinderGLKitTemplateSketch.cpp"; sourceTree = SOURCE_ROOT; };
+		94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CinderGLKitTemplateSketch.h"; sourceTree = "<group>"; };
+		9442F86B145F2A3B00C76F9E /* CinderGLKitTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinderGLKitTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9442F86F145F2A3B00C76F9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9442F871145F2A3B00C76F9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9442F873145F2A3B00C76F9E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9442F875145F2A3B00C76F9E /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		9442F877145F2A3B00C76F9E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		9442F87B145F2A3B00C76F9E /* Prefix_Prefix-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Prefix_Prefix-Info.plist"; sourceTree = "<group>"; };
-		9442F881145F2A3B00C76F9E /* Prefix_Prefix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix_Prefix-Prefix.pch"; sourceTree = "<group>"; };
+		9442F87B145F2A3B00C76F9E /* CinderGLKitTemplate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CinderGLKitTemplate-Info.plist"; sourceTree = "<group>"; };
+		9442F881145F2A3B00C76F9E /* CinderGLKitTemplate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CinderGLKitTemplate-Prefix.pch"; sourceTree = "<group>"; };
 		9442F89B145F2BE100C76F9E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9442F8A1145F2BE100C76F9E /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		9442F8A2145F2BE100C76F9E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		9442F860145F2A3B00C76F9E = {
 			isa = PBXGroup;
 			children = (
-				9442F879145F2A3B00C76F9E /* Prefix_Prefix */,
+				9442F879145F2A3B00C76F9E /* CinderGLKitTemplate */,
 				9442F86E145F2A3B00C76F9E /* Frameworks */,
 				9442F86C145F2A3B00C76F9E /* Products */,
 			);
@@ -131,7 +131,7 @@
 		9442F86C145F2A3B00C76F9E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9442F86B145F2A3B00C76F9E /* Prefix_Prefix.app */,
+				9442F86B145F2A3B00C76F9E /* CinderGLKitTemplate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,25 +154,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9442F879145F2A3B00C76F9E /* Prefix_Prefix */ = {
+		9442F879145F2A3B00C76F9E /* CinderGLKitTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				94147ECA14771CFD00769513 /* blocks */,
 				9442F89A145F2BE100C76F9E /* include */,
 				9442F8A0145F2BE100C76F9E /* src */,
 				9442F89D145F2BE100C76F9E /* shaders */,
-				9442F87B145F2A3B00C76F9E /* Prefix_Prefix-Info.plist */,
-				9442F881145F2A3B00C76F9E /* Prefix_Prefix-Prefix.pch */,
+				9442F87B145F2A3B00C76F9E /* CinderGLKitTemplate-Info.plist */,
+				9442F881145F2A3B00C76F9E /* CinderGLKitTemplate-Prefix.pch */,
 				9464C4BD145F2F6300E019B6 /* CinderGLView.xib */,
 			);
-			path = Prefix_Prefix;
+			path = CinderGLKitTemplate;
 			sourceTree = "<group>";
 		};
 		9442F89A145F2BE100C76F9E /* include */ = {
 			isa = PBXGroup;
 			children = (
 				9442F89B145F2BE100C76F9E /* AppDelegate.h */,
-				94147EDD14773F3700769513 /* Prefix_PrefixSketch.h */,
+				94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -191,7 +191,7 @@
 			children = (
 				9442F8A2145F2BE100C76F9E /* main.m */,
 				9442F8A1145F2BE100C76F9E /* AppDelegate.mm */,
-				94147EDB14773F2200769513 /* Prefix_PrefixSketch.cpp */,
+				94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -199,9 +199,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9442F86A145F2A3B00C76F9E /* Prefix_Prefix */ = {
+		9442F86A145F2A3B00C76F9E /* CinderGLKitTemplate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "Prefix_Prefix" */;
+			buildConfigurationList = 9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "CinderGLKitTemplate" */;
 			buildPhases = (
 				9442F867145F2A3B00C76F9E /* Sources */,
 				9442F868145F2A3B00C76F9E /* Frameworks */,
@@ -211,9 +211,9 @@
 			);
 			dependencies = (
 			);
-			name = Prefix_Prefix;
-			productName = Prefix_Prefix;
-			productReference = 9442F86B145F2A3B00C76F9E /* Prefix_Prefix.app */;
+			name = CinderGLKitTemplate;
+			productName = CinderGLKitTemplate;
+			productReference = 9442F86B145F2A3B00C76F9E /* CinderGLKitTemplate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -224,7 +224,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = 9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "Prefix_Prefix" */;
+			buildConfigurationList = 9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "CinderGLKitTemplate" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -236,7 +236,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9442F86A145F2A3B00C76F9E /* Prefix_Prefix */,
+				9442F86A145F2A3B00C76F9E /* CinderGLKitTemplate */,
 			);
 		};
 /* End PBXProject section */
@@ -264,7 +264,7 @@
 				94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */,
 				94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */,
 				94147ED614771CFD00769513 /* Vbo.cpp in Sources */,
-				94147EDC14773F2200769513 /* Prefix_PrefixSketch.cpp in Sources */,
+				94147EDC14773F2200769513 /* CinderGLKitTemplateSketch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +330,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Prefix_Prefix-Prefix.pch";
+				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "Prefix_Prefix-Info.plist";
+				INFOPLIST_FILE = "CinderGLKitTemplate-Info.plist";
 				OTHER_LDFLAGS = "";
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
 					"\"$(CINDER_PATH)/lib/libcinder-iphone_d.a\"",
@@ -351,9 +351,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Prefix_Prefix-Prefix.pch";
+				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
-				INFOPLIST_FILE = "Prefix_Prefix-Info.plist";
+				INFOPLIST_FILE = "CinderGLKitTemplate-Info.plist";
 				OTHER_LDFLAGS = "";
 				"OTHER_LDFLAGS[sdk=iphoneos*][arch=*]" = (
 					"\"$(CINDER_PATH)/lib/libcinder-iphone.a\"",
@@ -371,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "Prefix_Prefix" */ = {
+		9442F865145F2A3B00C76F9E /* Build configuration list for PBXProject "CinderGLKitTemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9442F88F145F2A3B00C76F9E /* Debug */,
@@ -380,7 +380,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "Prefix_Prefix" */ = {
+		9442F891145F2A3B00C76F9E /* Build configuration list for PBXNativeTarget "CinderGLKitTemplate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9442F892145F2A3B00C76F9E /* Debug */,

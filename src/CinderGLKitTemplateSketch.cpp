@@ -1,11 +1,11 @@
-#include "Prefix_PrefixSketch.h"
+#include "CinderGLKitTemplateSketch.h"
 
 #include "cinder/ImageIO.h"
 #include "cinder/app/App.h"
 
 using namespace std;
 
-void Prefix_PrefixSketch::setup()
+void CinderGLKitTemplateSketch::setup()
 {
     m_vbo = gl::Vbo::create(GL_LINE_STRIP);
     m_vbo->set(gl::Vbo::Attribute::create("position", 3));
@@ -19,7 +19,7 @@ void Prefix_PrefixSketch::setup()
     m_camera.setOrtho(0, 1, -1, 1, -1, 1);
 }
 
-void Prefix_PrefixSketch::update()
+void CinderGLKitTemplateSketch::update()
 {
     float time = getElapsedSeconds() * 0.2f;
 
@@ -32,7 +32,7 @@ void Prefix_PrefixSketch::update()
     m_vbo->get("position")->setData(positions);
 }
 
-void Prefix_PrefixSketch::draw(const Area &area)
+void CinderGLKitTemplateSketch::draw(const Area &area)
 {
     gl::clear(ColorA(1, 1, 0, 1));
     
