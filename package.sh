@@ -1,9 +1,12 @@
-#!bin/bash
+#!/bin/bash
 
-# Usage
+# Usage :
 #   Make sure you are cd'd into the project directory before running.
-#   $> sh package.sh <Template_Path>
+#   $ ./package.sh <Template_Path>
+#
+# Example :
+#   $ ./package.sh ../TinderBox.app/Contents/Resources/Templates/Cocoa\ Touch/CinderGLKit/
 
-cp -R . $1
+cp -Rf . $1
 rm -rf $1/.git $1/package.sh $1/findreplace.py
 python findreplace.py $1 "CinderGLKitTemplate" "«PREFIX»"
