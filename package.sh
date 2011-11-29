@@ -1,5 +1,8 @@
 #!bin/bash
-# Usage: sh package.sh <Template_Path>
+
+# Usage
+#   Make sure you are cd'd into the project directory before running.
+#   $> sh package.sh <Template_Path>
 
 cp -R . $1
 rm -rf $1/.git
