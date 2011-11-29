@@ -26,6 +26,7 @@ public:
     
     const Vec2i& getSize() const { return mSize; }
     void         setSize(const Vec2i &size){ mSize = size; }
+    Area         getBounds() const { return Area(0, 0, mSize.x, mSize.y); }
     float        getAspectRatio() const { return (float)mSize.x / (float)mSize.y; }
     
     double getElapsedSeconds() const { return mTimer.getSeconds(); }
