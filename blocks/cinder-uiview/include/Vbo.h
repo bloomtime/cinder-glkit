@@ -3,6 +3,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/gl/GlslProg.h"
 #include "cinder/Vector.h"
+#include "cinder/Color.h"
 
 #include <tr1/unordered_map>
 
@@ -41,6 +42,7 @@ public:
         AttributeRef  setData(const std::vector<float> &data);
         AttributeRef  setData(const std::vector<Vec2f> &data);
         AttributeRef  setData(const std::vector<Vec3f> &data);
+        AttributeRef  setData(const std::vector<Color> &data);
         const Buffer& getData() const { return mData; }
         
         const std::string& getName() const { return mName; }
