@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED114771CFD00769513 /* CinderGLSketch.mm */; };
-		94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED214771CFD00769513 /* CinderGLViewController.mm */; };
-		94147ED614771CFD00769513 /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147ED314771CFD00769513 /* Vbo.cpp */; };
 		94147EDC14773F2200769513 /* CinderGLKitTemplateSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */; };
 		9442F870145F2A3B00C76F9E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F86F145F2A3B00C76F9E /* UIKit.framework */; };
 		9442F872145F2A3B00C76F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9442F871145F2A3B00C76F9E /* Foundation.framework */; };
@@ -25,19 +22,16 @@
 		9464C4BE145F2F6300E019B6 /* CinderGLView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9464C4BD145F2F6300E019B6 /* CinderGLView.xib */; };
 		94F213C11475A94200D885ED /* color.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B81475A3B300D885ED /* color.fsh */; };
 		94F213C21475A94200D885ED /* color.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 94F213B91475A3B300D885ED /* color.vsh */; };
+		94FF67A71485D0FE005A369C /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A41485D0FE005A369C /* CinderGLSketch.mm */; };
+		94FF67A81485D0FE005A369C /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A51485D0FE005A369C /* CinderGLViewController.mm */; };
+		94FF67A91485D0FE005A369C /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A61485D0FE005A369C /* Vbo.cpp */; };
 		E2E774031473184D00FD113C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774021473184D00FD113C /* CoreVideo.framework */; };
 		E2E774051473187900FD113C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774041473187900FD113C /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94147ECD14771CFD00769513 /* CinderGLSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLSketch.h; sourceTree = "<group>"; };
-		94147ECE14771CFD00769513 /* CinderGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLViewController.h; sourceTree = "<group>"; };
-		94147ECF14771CFD00769513 /* Vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vbo.h; sourceTree = "<group>"; };
-		94147ED114771CFD00769513 /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
-		94147ED214771CFD00769513 /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
-		94147ED314771CFD00769513 /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
-		94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "CinderGLKitTemplateSketch.cpp"; path = "src/CinderGLKitTemplateSketch.cpp"; sourceTree = SOURCE_ROOT; };
-		94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CinderGLKitTemplateSketch.h"; sourceTree = "<group>"; };
+		94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CinderGLKitTemplateSketch.cpp; path = src/CinderGLKitTemplateSketch.cpp; sourceTree = SOURCE_ROOT; };
+		94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLKitTemplateSketch.h; sourceTree = "<group>"; };
 		9442F86B145F2A3B00C76F9E /* CinderGLKitTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinderGLKitTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9442F86F145F2A3B00C76F9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9442F871145F2A3B00C76F9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +50,12 @@
 		9464C4BD145F2F6300E019B6 /* CinderGLView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinderGLView.xib; sourceTree = SOURCE_ROOT; };
 		94F213B81475A3B300D885ED /* color.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = color.fsh; sourceTree = "<group>"; };
 		94F213B91475A3B300D885ED /* color.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = color.vsh; sourceTree = "<group>"; };
+		94FF67A01485D0FE005A369C /* CinderGLSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLSketch.h; sourceTree = "<group>"; };
+		94FF67A11485D0FE005A369C /* CinderGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLViewController.h; sourceTree = "<group>"; };
+		94FF67A21485D0FE005A369C /* Vbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vbo.h; sourceTree = "<group>"; };
+		94FF67A41485D0FE005A369C /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
+		94FF67A51485D0FE005A369C /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
+		94FF67A61485D0FE005A369C /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
 		E2E774021473184D00FD113C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E2E774041473187900FD113C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -85,39 +85,10 @@
 		94147ECA14771CFD00769513 /* blocks */ = {
 			isa = PBXGroup;
 			children = (
-				94147ECB14771CFD00769513 /* cinder-uiview */,
+				94FF679E1485D0FE005A369C /* cinder-glkit */,
 			);
 			path = blocks;
 			sourceTree = SOURCE_ROOT;
-		};
-		94147ECB14771CFD00769513 /* cinder-uiview */ = {
-			isa = PBXGroup;
-			children = (
-				94147ECC14771CFD00769513 /* include */,
-				94147ED014771CFD00769513 /* src */,
-			);
-			path = "cinder-uiview";
-			sourceTree = "<group>";
-		};
-		94147ECC14771CFD00769513 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				94147ECD14771CFD00769513 /* CinderGLSketch.h */,
-				94147ECE14771CFD00769513 /* CinderGLViewController.h */,
-				94147ECF14771CFD00769513 /* Vbo.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		94147ED014771CFD00769513 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				94147ED114771CFD00769513 /* CinderGLSketch.mm */,
-				94147ED214771CFD00769513 /* CinderGLViewController.mm */,
-				94147ED314771CFD00769513 /* Vbo.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
 		};
 		9442F860145F2A3B00C76F9E = {
 			isa = PBXGroup;
@@ -196,6 +167,35 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
+		94FF679E1485D0FE005A369C /* cinder-glkit */ = {
+			isa = PBXGroup;
+			children = (
+				94FF679F1485D0FE005A369C /* include */,
+				94FF67A31485D0FE005A369C /* src */,
+			);
+			path = "cinder-glkit";
+			sourceTree = "<group>";
+		};
+		94FF679F1485D0FE005A369C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				94FF67A01485D0FE005A369C /* CinderGLSketch.h */,
+				94FF67A11485D0FE005A369C /* CinderGLViewController.h */,
+				94FF67A21485D0FE005A369C /* Vbo.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		94FF67A31485D0FE005A369C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				94FF67A41485D0FE005A369C /* CinderGLSketch.mm */,
+				94FF67A51485D0FE005A369C /* CinderGLViewController.mm */,
+				94FF67A61485D0FE005A369C /* Vbo.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,10 +261,10 @@
 			files = (
 				9442F8A6145F2BE100C76F9E /* AppDelegate.mm in Sources */,
 				9442F8A7145F2BE100C76F9E /* main.m in Sources */,
-				94147ED414771CFD00769513 /* CinderGLSketch.mm in Sources */,
-				94147ED514771CFD00769513 /* CinderGLViewController.mm in Sources */,
-				94147ED614771CFD00769513 /* Vbo.cpp in Sources */,
 				94147EDC14773F2200769513 /* CinderGLKitTemplateSketch.cpp in Sources */,
+				94FF67A71485D0FE005A369C /* CinderGLSketch.mm in Sources */,
+				94FF67A81485D0FE005A369C /* CinderGLViewController.mm in Sources */,
+				94FF67A91485D0FE005A369C /* Vbo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
