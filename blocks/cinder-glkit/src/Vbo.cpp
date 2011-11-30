@@ -117,6 +117,10 @@ Vbo::AttributeRef Vbo::Attribute::setData(const vector<Color> &data)
 {
     return setData(&data[0], sizeof(float) * 3 * data.size());
 }
+Vbo::AttributeRef Vbo::Attribute::setData(const vector<ColorA> &data)
+{
+    return setData(&data[0], sizeof(float) * 4 * data.size());
+}
 
 void Vbo::Attribute::bufferData()
 {

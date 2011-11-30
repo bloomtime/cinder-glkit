@@ -43,6 +43,7 @@ public:
         AttributeRef  setData(const std::vector<Vec2f> &data);
         AttributeRef  setData(const std::vector<Vec3f> &data);
         AttributeRef  setData(const std::vector<Color> &data);
+        AttributeRef  setData(const std::vector<ColorA> &data);
         const Buffer& getData() const { return mData; }
         
         const std::string& getName() const { return mName; }
