@@ -25,12 +25,13 @@
 		94FF67A71485D0FE005A369C /* CinderGLSketch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A41485D0FE005A369C /* CinderGLSketch.mm */; };
 		94FF67A81485D0FE005A369C /* CinderGLViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A51485D0FE005A369C /* CinderGLViewController.mm */; };
 		94FF67A91485D0FE005A369C /* Vbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94FF67A61485D0FE005A369C /* Vbo.cpp */; };
+		E28AD53814870F3F0052E6AB /* CocoaHtmlOverlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E28AD53714870F3F0052E6AB /* CocoaHtmlOverlay.mm */; };
 		E2E774031473184D00FD113C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774021473184D00FD113C /* CoreVideo.framework */; };
 		E2E774051473187900FD113C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E774041473187900FD113C /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CinderGLKitTemplateSketch.cpp; path = src/CinderGLKitTemplateSketch.cpp; sourceTree = SOURCE_ROOT; };
+		94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = CinderGLKitTemplateSketch.cpp; path = src/CinderGLKitTemplateSketch.cpp; sourceTree = SOURCE_ROOT; };
 		94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderGLKitTemplateSketch.h; sourceTree = "<group>"; };
 		9442F86B145F2A3B00C76F9E /* CinderGLKitTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinderGLKitTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9442F86F145F2A3B00C76F9E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -56,6 +57,9 @@
 		94FF67A41485D0FE005A369C /* CinderGLSketch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLSketch.mm; sourceTree = "<group>"; };
 		94FF67A51485D0FE005A369C /* CinderGLViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinderGLViewController.mm; sourceTree = "<group>"; };
 		94FF67A61485D0FE005A369C /* Vbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vbo.cpp; sourceTree = "<group>"; };
+		E28AD53614870F0F0052E6AB /* HtmlOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlOverlay.h; sourceTree = "<group>"; };
+		E28AD53714870F3F0052E6AB /* CocoaHtmlOverlay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CocoaHtmlOverlay.mm; sourceTree = "<group>"; };
+		E28AD53914871BED0052E6AB /* CocoaHtmlOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaHtmlOverlay.h; sourceTree = "<group>"; };
 		E2E774021473184D00FD113C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E2E774041473187900FD113C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -144,6 +148,8 @@
 			children = (
 				9442F89B145F2BE100C76F9E /* AppDelegate.h */,
 				94147EDD14773F3700769513 /* CinderGLKitTemplateSketch.h */,
+				E28AD53614870F0F0052E6AB /* HtmlOverlay.h */,
+				E28AD53914871BED0052E6AB /* CocoaHtmlOverlay.h */,
 			);
 			path = include;
 			sourceTree = SOURCE_ROOT;
@@ -163,6 +169,7 @@
 				9442F8A2145F2BE100C76F9E /* main.m */,
 				9442F8A1145F2BE100C76F9E /* AppDelegate.mm */,
 				94147EDB14773F2200769513 /* CinderGLKitTemplateSketch.cpp */,
+				E28AD53714870F3F0052E6AB /* CocoaHtmlOverlay.mm */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -265,6 +272,7 @@
 				94FF67A71485D0FE005A369C /* CinderGLSketch.mm in Sources */,
 				94FF67A81485D0FE005A369C /* CinderGLViewController.mm in Sources */,
 				94FF67A91485D0FE005A369C /* Vbo.cpp in Sources */,
+				E28AD53814870F3F0052E6AB /* CocoaHtmlOverlay.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +337,7 @@
 		9442F892145F2A3B00C76F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
@@ -350,6 +359,7 @@
 		9442F893145F2A3B00C76F9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";

@@ -2,6 +2,7 @@
 #import "CinderGLViewController.h"
 
 #include "CinderGLKitTemplateSketch.h"
+#include "CocoaHtmlOverlay.h"
 
 @implementation AppDelegate
 
@@ -14,9 +15,14 @@
 
     self.viewController = [[CinderGLViewController alloc] initWithNibName: @"CinderGLView" 
                                                                    bundle: nil];
-    [self.viewController setSketch: new CinderGLKitTemplateSketch()];
+    
+    CinderGLKitTemplateSketch *sketch = new CinderGLKitTemplateSketch();
+    sketch->mHtmlOverlay = CocoaHtmlOverlay::create( self.viewController.view );
+    
+    [self.viewController setSketch: sketch];
 
     self.window.rootViewController = self.viewController;
+    
     [self.window makeKeyAndVisible];
     
     return YES;

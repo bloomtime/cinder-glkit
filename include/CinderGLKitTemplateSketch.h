@@ -9,6 +9,8 @@
 #include "cinder/Camera.h"
 #include "cinder/Perlin.h"
 
+#include "HtmlOverlay.h"
+
 using namespace ci;
 
 class CinderGLKitTemplateSketch : public CinderGLSketch {
@@ -18,6 +20,10 @@ public:
     void update();
     void draw(const Area &area);
     
+    void touchesBegan( app::TouchEvent event );
+    void touchesMoved( app::TouchEvent event );
+    void touchesEnded( app::TouchEvent event );
+    
     gl::VboRef m_vbo;
     
     gl::GlslProg m_color_shader;
@@ -26,4 +32,5 @@ public:
     
     Perlin m_perlin;
     
+    HtmlOverlayRef mHtmlOverlay;
 };
