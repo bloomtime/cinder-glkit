@@ -23,7 +23,12 @@ public:
     void touchesBegan( app::TouchEvent event );
     void touchesMoved( app::TouchEvent event );
     void touchesEnded( app::TouchEvent event );
-    
+
+    void loadingStarted( HtmlOverlayRef htmlOverlay );
+    void loadingFinished( HtmlOverlayRef htmlOverlay );
+    void loadingError( HtmlOverlayRef htmlOverlay );
+    bool loadingShouldStart( HtmlOverlayRef htmlOverlay, std::string url );
+
     gl::VboRef m_vbo;
     
     gl::GlslProg m_color_shader;
@@ -33,4 +38,6 @@ public:
     Perlin m_perlin;
     
     HtmlOverlayRef mHtmlOverlay;
+    bool mShowOverlay;
+    bool mOverlayLoaded;
 };

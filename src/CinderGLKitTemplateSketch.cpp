@@ -3,14 +3,20 @@
 #include "cinder/ImageIO.h"
 #include "cinder/app/App.h"
 
-#import <UIKit/UIKit.h>
-
 using namespace std;
 
 void CinderGLKitTemplateSketch::setup()
 {
+    mShowOverlay = false;
+    mOverlayLoaded = false;
+    
     m_vbo = gl::Vbo::create(GL_LINE_STRIP);
     m_vbo->set(gl::Vbo::Attribute::create("position", 3));
+    
+    mHtmlOverlay->registerLoadingStarted( this, &CinderGLKitTemplateSketch::loadingStarted );
+    mHtmlOverlay->registerLoadingFinished( this, &CinderGLKitTemplateSketch::loadingFinished );
+    mHtmlOverlay->registerLoadingError( this, &CinderGLKitTemplateSketch::loadingError );
+    mHtmlOverlay->registerLoadingShouldStart( this, &CinderGLKitTemplateSketch::loadingShouldStart );
     
     try{
         m_color_shader = gl::GlslProg(app::loadResource("color.vsh"), app::loadResource("color.fsh"));
@@ -31,7 +37,9 @@ void CinderGLKitTemplateSketch::update()
         positions.push_back(Vec3f(t, m_perlin.fBm(t, time), 0));
     }
     
-    m_vbo->get("position")->setData(positions);    
+    m_vbo->get("position")->setData(positions);  
+    
+    mHtmlOverlay->setShowing( mShowOverlay && mOverlayLoaded );
 }
 
 void CinderGLKitTemplateSketch::draw(const Area &area)
@@ -48,10 +56,21 @@ void CinderGLKitTemplateSketch::draw(const Area &area)
 
 void CinderGLKitTemplateSketch::touchesBegan( app::TouchEvent event )
 {
-    const static string begin = "<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=300px, initial-scale=1, maximum-scale=1\"><style>html, body { width: 100%; height: 100%; padding: 0; margin: 0; } body { background-color: transparent; font-family: sans-serif; } p { margin: 10px; padding: 0; }</style><body><p>";
-    const static string tweet = "RT @KuraFire: US judge orders hundreds of sites “de-indexed” from Google, Facebook etc. <a href=http://j.mp/u4KsNg>j.mp/u4KsNg</a> \n\nWhy wait for SOPA indeed… ...";
+    const static string begin = "<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=300px, initial-scale=1, maximum-scale=1\"><style>html, body { width: 100%; height: 100%; padding: 0; margin: 0; } body { background-color: transparent; font-family: sans-serif; } p { margin: 10px; padding: 0; }</style><script>/*document.onload = function(){ document.ontouchmove = function(e){ e.preventDefault(); } };*/</script>";
+    const static string tweet[4] = {
+        "RT @KuraFire: US judge orders hundreds of sites “de-indexed” from Google, Facebook etc. <a href=http://j.mp/u4KsNg>j.mp/u4KsNg</a> \n\nWhy wait for SOPA indeed… ...",
+        "RT @nickycast: @zachinglis There was debate on what defines a robot, that perhaps a measure should be Emotional Intelligence rather than ...",
+        "<a href=http://youtu.be/rC6yylIwyKg>youtu.be/rC6yylIwyKg</a>  *Land artists, Reno Nevada.  What can one usefully  tell these strange people  #NextNature #Anthropocene",
+        "Hallelujah! Since upgrading to iOS5, Liveview Screencaster seems to just work all the time. So darn useful. Get it: <a href=http://bit.ly/lvview>bit.ly/lvview</a>" 
+    };
     const static string end = "</p></body></html>";
-    mHtmlOverlay->setHtml( begin + tweet + end );
+    static int index = 0;
+    
+    mHtmlOverlay->setHidden();
+    
+    mOverlayLoaded = false;
+    mHtmlOverlay->setHtml( begin + tweet[index] + end );
+    index = (index + 1) % 4;
     
     Rectf rect = mHtmlOverlay->getRect();
     float width = rect.getWidth();
@@ -61,12 +80,12 @@ void CinderGLKitTemplateSketch::touchesBegan( app::TouchEvent event )
         
     touchesMoved( event );
     
-    mHtmlOverlay->setShowing();    
+    mShowOverlay = true;
 }
 
 void CinderGLKitTemplateSketch::touchesEnded( app::TouchEvent event )
 {
-    mHtmlOverlay->setHidden();
+    mShowOverlay = false;
 }
 
 void CinderGLKitTemplateSketch::touchesMoved( app::TouchEvent event )
@@ -81,4 +100,29 @@ void CinderGLKitTemplateSketch::touchesMoved( app::TouchEvent event )
     rect.y1 = firstTouch.getY() + 10.0;
     rect.y2 = rect.y1 + height;
     mHtmlOverlay->setRect( rect );
+}
+
+void CinderGLKitTemplateSketch::loadingStarted( HtmlOverlayRef htmlOverlay )
+{
+    //mHtmlOverlay->setHidden();
+    // TODO: show loading indicator
+}
+
+void CinderGLKitTemplateSketch::loadingFinished( HtmlOverlayRef htmlOverlay )
+{
+    mOverlayLoaded = true;
+    // TODO: hide loading indicator
+}
+
+void CinderGLKitTemplateSketch::loadingError( HtmlOverlayRef htmlOverlay )
+{
+    // TODO: show an error?
+}
+
+bool CinderGLKitTemplateSketch::loadingShouldStart( HtmlOverlayRef htmlOverlay, std::string url )
+{
+    // we can deal with this ourselves later
+    cout << url << " requested" << endl;
+    // prevent all links in the uiwebview
+    return false;
 }

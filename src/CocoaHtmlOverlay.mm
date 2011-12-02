@@ -7,9 +7,75 @@
 //
 
 #include "CocoaHtmlOverlay.h"
+#import <QuartzCore/CAAnimation.h>
+#import <QuartzCore/CATransaction.h>
+
+//////////////////////////////
+
+@implementation WVDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)wv 
+{
+//    NSLog (@"webViewDidStartLoad");
+    mCocoaHtmlOverlay->loadingStarted();
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)wv {
+//    NSLog (@"webViewDidFinishLoad");
+    mCocoaHtmlOverlay->loadingFinished();
+}
+
+- (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
+    NSLog (@"webView:didFailLoadWithError");
+    NSLog ([error description]);
+    mCocoaHtmlOverlay->loadingError();    
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
+{
+//    NSLog (@"webView:shouldStartLoadWithRequest");
+    // TODO: pass the type as well (blah blah leaky abstractions blah)
+    /*
+        UIWebViewNavigationTypeLinkClicked,
+        UIWebViewNavigationTypeFormSubmitted,
+        UIWebViewNavigationTypeBackForward,
+        UIWebViewNavigationTypeReload,
+        UIWebViewNavigationTypeFormResubmitted,
+        UIWebViewNavigationTypeOther
+    */
+    // if it's "other" then we set the HTML manually (so carry on), otherwise check the URL with the app...
+    return navigationType == UIWebViewNavigationTypeOther || mCocoaHtmlOverlay->loadingShouldStart( std::string([[request.URL absoluteString] UTF8String]) );
+}
+
+@end
+
+//////////////////////////////
+
+CocoaHtmlOverlay::CocoaHtmlOverlay( UIView *view )
+{
+    CGRect webFrame = CGRectMake(0.0, 0.0, 300.0, 100.0);
+    mWebView = [[UIWebView alloc] initWithFrame:webFrame];
+    mWebView.opaque = NO;
+    mWebView.backgroundColor = [UIColor clearColor];
+    mWebView.scalesPageToFit = NO;
+
+    if ([mWebView respondsToSelector:@selector(scrollView)]) {
+        mWebView.scrollView.alwaysBounceHorizontal = NO;
+        mWebView.scrollView.alwaysBounceVertical = NO;
+        mWebView.scrollView.scrollEnabled = NO;
+    }
+    
+    mDelegate = [[WVDelegate alloc] init];
+    mDelegate->mCocoaHtmlOverlay = this;
+    mWebView.delegate = mDelegate;
+    
+    mWebView.hidden = YES;
+    [view addSubview: mWebView];
+}
 
 CocoaHtmlOverlay::~CocoaHtmlOverlay()
 {
+    mWebView.delegate = nil;
     //[mWebView release]; // not needed with ARC
 }
 
@@ -34,12 +100,22 @@ ci::Rectf CocoaHtmlOverlay::getRect( )
 
 void CocoaHtmlOverlay::setShowing( bool showing )
 {
-    mWebView.hidden = !showing;
+    setHidden( !showing );
 }
 
 void CocoaHtmlOverlay::setHidden( bool hidden )
 {
-    mWebView.hidden = hidden;
+    if (mWebView.hidden != hidden) {
+        [CATransaction begin];
+        CATransition *animation = [CATransition animation];
+        animation.type = kCATransitionFade;
+        animation.duration = 0.15;
+
+        [[mWebView layer] addAnimation:animation forKey:@"fade"];
+        [CATransaction commit];
+        
+        mWebView.hidden = hidden;
+    }
 }
 
 bool CocoaHtmlOverlay::isShowing()
@@ -51,3 +127,4 @@ bool CocoaHtmlOverlay::isHidden()
 {
     return mWebView.hidden;
 }
+

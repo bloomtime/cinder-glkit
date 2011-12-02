@@ -11,6 +11,14 @@
 #import <UIKit/UIKit.h>
 #include "HtmlOverlay.h" // interface
 
+class CocoaHtmlOverlay;
+
+@interface WVDelegate : NSObject <UIWebViewDelegate> {
+@public
+    CocoaHtmlOverlay *mCocoaHtmlOverlay;
+}
+@end
+
 class CocoaHtmlOverlay : public HtmlOverlay 
 {
 public:
@@ -33,18 +41,8 @@ public:
     
 private:
     
-    CocoaHtmlOverlay( UIView *view )
-    {
-        CGRect webFrame = CGRectMake(0.0, 0.0, 300.0, 100.0);
-        mWebView = [[UIWebView alloc] initWithFrame:webFrame];
-        mWebView.opaque = NO;
-        mWebView.backgroundColor = [UIColor clearColor];
-        mWebView.scalesPageToFit = NO;
-        //    mWebView.delegate = self;
-        mWebView.hidden = YES;
-        [view addSubview: mWebView];
-    }
+    CocoaHtmlOverlay( UIView *view );
     
     UIWebView *mWebView;
-    
+    WVDelegate *mDelegate;
 };
