@@ -22,12 +22,21 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)wv {
 //    NSLog (@"webViewDidFinishLoad");
+   // TODO: if autoSize, in overridden cocoahtmloverlay thinger 
+    CGRect frame = wv.frame;
+    frame.size.height = 1;
+    wv.frame = frame;
+    CGSize fittingSize = [wv sizeThatFits:CGSizeZero];
+    fittingSize.width += 5;  // box-shadow-hack
+    fittingSize.height += 5; // box-shadow-hack
+    frame.size = fittingSize;
+    wv.frame = frame;
     mCocoaHtmlOverlay->loadingFinished();
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
     NSLog (@"webView:didFailLoadWithError");
-    NSLog ([error description]);
+//    NSLog ([error description]);
     mCocoaHtmlOverlay->loadingError();    
 }
 

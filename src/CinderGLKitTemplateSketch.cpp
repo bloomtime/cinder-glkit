@@ -56,7 +56,7 @@ void CinderGLKitTemplateSketch::draw(const Area &area)
 
 void CinderGLKitTemplateSketch::touchesBegan( app::TouchEvent event )
 {
-    const static string begin = "<!DOCTYPE html><html><meta name=\"viewport\" content=\"width=300px, initial-scale=1, maximum-scale=1\"><style>html, body { width: 100%; height: 100%; padding: 0; margin: 0; } body { background-color: transparent; font-family: sans-serif; } p { margin: 10px; padding: 0; }</style><script>/*document.onload = function(){ document.ontouchmove = function(e){ e.preventDefault(); } };*/</script>";
+    const static string begin = "<!DOCTYPE html><html><head><meta name=\"viewport\" content=\"width=300px, initial-scale=1, maximum-scale=1\"><style>html, body { width: 100%; height: 100%; padding: 0; margin: 0; } body { background-color: transparent; font-family: sans-serif; } p { width: 300px; min-height: 50px; margin: 10px; padding: 10px; border-radius: 15px 15px 15px 15px; background: white; -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.25); }</style></head><body><p>";
     const static string tweet[4] = {
         "RT @KuraFire: US judge orders hundreds of sites “de-indexed” from Google, Facebook etc. <a href=http://j.mp/u4KsNg>j.mp/u4KsNg</a> \n\nWhy wait for SOPA indeed… ...",
         "RT @nickycast: @zachinglis There was debate on what defines a robot, that perhaps a measure should be Emotional Intelligence rather than ...",
