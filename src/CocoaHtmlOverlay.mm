@@ -35,8 +35,8 @@
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
-    NSLog (@"webView:didFailLoadWithError");
-//    NSLog ([error description]);
+    NSLog(@"webView:didFailLoadWithError");
+    NSLog(@"Error description - %@", [error localizedDescription]);
     mCocoaHtmlOverlay->loadingError();    
 }
 
