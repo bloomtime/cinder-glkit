@@ -139,7 +139,7 @@ using namespace ci::app;
 - (uint32_t)findTouchInMap:(UITouch*)touch
 {
     auto found(mTouchIds.find(touch));
-    if(found == mTouchIds.end())
+    if(found != mTouchIds.end())
         return found->second;
     return 0;
 }
@@ -163,7 +163,7 @@ using namespace ci::app;
     mSketch->setActiveTouches(active_touches);
 }
 
-- (std::vector<app::TouchEvent::Touch>)convertTouches:(NSSet*)touches andRemoveFromMap:(BOOL)remove
+- (std::vector<app::TouchEvent::Touch>)convertTouches:(NSSet*)touches andAddToMap:(BOOL)add orRemoveFromMap:(BOOL)remove
 {
     static float content_scale = [self.view respondsToSelector: NSSelectorFromString(@"contentScaleFactor")] ? self.view.contentScaleFactor : 1;
     
@@ -174,7 +174,7 @@ using namespace ci::app;
         touch_list.push_back(TouchEvent::Touch(
             Vec2f(pt.x, pt.y) * content_scale,
             Vec2f(pt_prev.x, pt_prev.y ) * content_scale,
-            [self addTouchToMap: touch],
+            add ? [self addTouchToMap: touch] : [self findTouchInMap: touch],
             [touch timestamp],
             (__bridge_retained void*)touch
         ));
@@ -188,7 +188,7 @@ using namespace ci::app;
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent *)event
 {   
     if(mSketch){
-        std::vector<TouchEvent::Touch> touch_list = [self convertTouches: touches andRemoveFromMap: NO];
+        auto touch_list = [self convertTouches: touches andAddToMap: YES orRemoveFromMap: NO];
         [self updateActiveTouches];
         if(!touch_list.empty())
             mSketch->touchesBegan(TouchEvent(touch_list));
@@ -198,7 +198,7 @@ using namespace ci::app;
 - (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event
 {
     if(mSketch){
-        auto touch_list = [self convertTouches: touches andRemoveFromMap: NO];
+        auto touch_list = [self convertTouches: touches andAddToMap: NO orRemoveFromMap: NO];
         [self updateActiveTouches];
         if(!touch_list.empty())
             mSketch->touchesMoved(TouchEvent(touch_list));
@@ -208,7 +208,7 @@ using namespace ci::app;
 - (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event
 {
     if(mSketch){
-        std::vector<TouchEvent::Touch> touch_list = [self convertTouches: touches andRemoveFromMap: YES];        
+        auto touch_list = [self convertTouches: touches andAddToMap: NO orRemoveFromMap: YES];
         [self updateActiveTouches];
         if(!touch_list.empty())
             mSketch->touchesEnded(TouchEvent(touch_list));
