@@ -18,7 +18,7 @@ using namespace ci;
 - (uint32_t)addTouchToMap:(UITouch*)touch;
 - (void)removeTouchFromMap:(UITouch*)touch;
 - (uint32_t)findTouchInMap:(UITouch*)touch;
-- (std::vector<ci::app::TouchEvent::Touch>)convertTouches:(NSSet*)touches andRemoveFromMap:(BOOL)remove;
+- (std::vector<app::TouchEvent::Touch>)convertTouches:(NSSet*)touches andAddToMap:(BOOL)add orRemoveFromMap:(BOOL)remove;
 - (void)updateActiveTouches;
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event;
 - (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event;
