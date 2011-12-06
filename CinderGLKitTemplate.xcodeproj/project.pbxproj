@@ -329,6 +329,9 @@
 		9442F892145F2A3B00C76F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = "$(CINDER_PATH_$(USER))";
+				CINDER_PATH_ryan = "../../../_code/frameworks/cinder-es2";
+				CINDER_PATH_tom = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
@@ -350,6 +353,9 @@
 		9442F893145F2A3B00C76F9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = "$(CINDER_PATH_$(USER))";
+				CINDER_PATH_ryan = "../../../_code/frameworks/cinder-es2";
+				CINDER_PATH_tom = /Users/tom/Documents/Code/Cinder/CinderES2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CinderGLKitTemplate-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
