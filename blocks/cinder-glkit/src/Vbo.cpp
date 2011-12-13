@@ -97,6 +97,9 @@ Vbo::AttributeRef Vbo::Attribute::createIndex(GLenum usage)
 
 Vbo::AttributeRef Vbo::Attribute::setData(const void* data, int data_length)
 {
+    if(data_length <= 0)
+        return shared_from_this();
+
     Buffer buf(data_length);
     buf.copyFrom(data, data_length);
     return setData(buf);
