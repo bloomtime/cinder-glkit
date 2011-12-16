@@ -3,6 +3,7 @@
 #include "cinder/Vector.h"
 #include "cinder/Area.h"
 #include "cinder/Timer.h"
+#include "cinder/Timeline.h"
 #include "cinder/app/TouchEvent.h"
 
 #include <ostream>
@@ -15,9 +16,13 @@ public:
     CinderGLSketch()
     : mNeedsSetup(true)
     , mTimer(true)
+    , mTimeline(Timeline::create())
     {};
     
     virtual ~CinderGLSketch(){};
+
+    void privateSetup__();
+    void privateUpdate__();
 
     virtual void setup(){};
     virtual void tearDown(){};
@@ -46,8 +51,9 @@ protected:
 
     Vec2i mSize;
     Timer mTimer;
+    std::shared_ptr< Timeline > mTimeline;
     
-    std::vector<app::TouchEvent::Touch> mActiveTouches;
+    std::vector< app::TouchEvent::Touch > mActiveTouches;
 
 };
 

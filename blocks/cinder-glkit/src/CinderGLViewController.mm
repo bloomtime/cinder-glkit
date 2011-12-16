@@ -79,7 +79,6 @@ using namespace ci::app;
 - (void)update
 {
     [EAGLContext setCurrentContext: self.context];
-    
     if(mSketch){
         mSketch->update();
     }
@@ -93,8 +92,9 @@ using namespace ci::app;
         GLKView *view = (GLKView *)self.view;
         
         Vec2i size(view.drawableWidth, view.drawableHeight);
-        if(size != mSketch->getSize())
+        if(size != mSketch->getSize()){
             mSketch->setSize(size);
+        }
         
         if(mSketch->mNeedsSetup){
             mSketch->setup();
