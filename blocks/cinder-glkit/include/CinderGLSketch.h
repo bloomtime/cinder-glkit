@@ -24,10 +24,12 @@ public:
     void privateSetup__();
     void privateUpdate__();
 
-    virtual void setup(){};
-    virtual void tearDown(){};
-    virtual void update(){};
-    virtual void draw(const Area &area){};
+    virtual void setup(){}
+    virtual void tearDown(){}
+    virtual void update(){}
+    virtual void draw(const Area &area){}
+    
+    Timeline& timeline(){ return *mTimeline; }
     
     const Vec2i& getSize() const { return mSize; }
     void         setSize(const Vec2i &size){ mSize = size; }
