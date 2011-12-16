@@ -80,7 +80,7 @@ using namespace ci::app;
 {
     [EAGLContext setCurrentContext: self.context];
     if(mSketch){
-        mSketch->update();
+        mSketch->privateUpdate__();
     }
 }
 
@@ -97,7 +97,7 @@ using namespace ci::app;
         }
         
         if(mSketch->mNeedsSetup){
-            mSketch->setup();
+            mSketch->privateSetup__();
             mSketch->mNeedsSetup = false;
         }
         
