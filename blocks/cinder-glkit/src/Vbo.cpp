@@ -104,30 +104,6 @@ Vbo::AttributeRef Vbo::Attribute::setData(const void* data, int data_length)
     buf.copyFrom(data, data_length);
     return setData(buf);
 }
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<float> &data)
-{
-    return setData(&data[0], sizeof(float) * data.size());
-}
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec2f> &data)
-{
-    return setData(&data[0], sizeof(float) * 2 * data.size());
-}
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec3f> &data)
-{
-    return setData(&data[0], sizeof(float) * 3 * data.size());
-}
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<Vec4f> &data)
-{
-    return setData(&data[0], sizeof(float) * 4 * data.size());
-}
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<Color> &data)
-{
-    return setData(&data[0], sizeof(float) * 3 * data.size());
-}
-Vbo::AttributeRef Vbo::Attribute::setData(const vector<ColorA> &data)
-{
-    return setData(&data[0], sizeof(float) * 4 * data.size());
-}
 
 void Vbo::Attribute::bufferData()
 {
