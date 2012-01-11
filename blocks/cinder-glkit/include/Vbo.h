@@ -46,31 +46,6 @@ public:
         {
             return setData(&data[0], sizeof(T) * data.size());
         }
-        template<typename T>
-        AttributeRef setData(const std::vector< Vec2<T> > &data)
-        {
-            return setData(&data[0], sizeof(T) * 2 * data.size());
-        }
-        template<typename T>
-        AttributeRef setData(const std::vector< Vec3<T> > &data)
-        {
-            return setData(&data[0], sizeof(T) * 3 * data.size());
-        }
-        template<typename T>
-        AttributeRef setData(const std::vector< Vec4<T> > &data)
-        {
-            return setData(&data[0], sizeof(T) * 4 * data.size());
-        }
-        template<typename T>
-        AttributeRef setData(const std::vector< ColorT<T> > &data)
-        {
-            return setData(&data[0], sizeof(T) * 3 * data.size());
-        }
-        template<typename T>
-        AttributeRef setData(const std::vector< ColorAT<T> > &data)
-        {
-            return setData(&data[0], sizeof(T) * 4 * data.size());
-        }
         
         const std::string& getName() const { return mName; }
         
