@@ -217,7 +217,12 @@ using namespace ci::app;
 
 - (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event
 {
-    [self touchesEnded: touches withEvent: event];
+    if(mSketch){
+        auto touch_list = [self convertTouches: touches andAddToMap: NO orRemoveFromMap: YES];
+        [self updateActiveTouches];
+        if(!touch_list.empty())
+            mSketch->touchesCanceled(TouchEvent(touch_list));
+    }
 }
 
 @end
