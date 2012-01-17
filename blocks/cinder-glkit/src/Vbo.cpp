@@ -37,6 +37,7 @@ void Vbo::draw()
     int length = numeric_limits<int>::max();
     
     vector<int> enabled_locations;
+    enabled_locations.reserve(mAttributes.size());
     
     // Bind any vertex attributes that have data and a location
     for(auto &pair : mAttributes){
