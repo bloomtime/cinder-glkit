@@ -28,7 +28,7 @@ Vbo::AttributeRef Vbo::get(const string &name)
 void Vbo::assignLocations(GlslProg shader)
 {
     for(auto &pair : mAttributes){
-        pair.second->setLocation(shader.getAttribLocation(pair.first));
+        pair.second->setLocation(shader.getAttribLocation(pair.first)); // Returns -1 if attribute is not used
     }
 }
 
@@ -59,6 +59,7 @@ void Vbo::draw()
         else{
             glDrawArrays(mType, 0, length);
         }
+        
         // Disable vertex attributes and Reset bind state
         for(int location : enabled_locations){
             glDisableVertexAttribArray(location);
