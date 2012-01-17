@@ -27,32 +27,43 @@ Vbo::AttributeRef Vbo::get(const string &name)
 
 void Vbo::assignLocations(GlslProg shader)
 {
-    for(auto pair : mAttributes){
+    for(auto &pair : mAttributes){
         pair.second->setLocation(shader.getAttribLocation(pair.first));
     }
 }
 
 void Vbo::draw()
 {
-    bool data_bound = false;
     int length = numeric_limits<int>::max();
-    for(auto pair : mAttributes){
+    
+    vector<int> enabled_locations;
+    
+    // Bind any vertex attributes that have data and a location
+    for(auto &pair : mAttributes){
         AttributeRef attr = pair.second;
         if(attr->getTarget() == GL_ARRAY_BUFFER && attr->getLocation() >= 0 && attr->getData()){
             attr->bindAndEnable();
-            data_bound = true;
+            enabled_locations.push_back(attr->getLocation());
             length = min(length, attr->getLength());
         }
     }
-    if(data_bound){
+    
+    // Draw if any attributes are enabled
+    if(enabled_locations.size() > 0){
         if(mAttributes.count("index")){
             AttributeRef index = mAttributes["index"];
             index->bind();
             glDrawElements(mType, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         }
         else{
             glDrawArrays(mType, 0, length);
         }
+        // Disable vertex attributes and Reset bind state
+        for(int location : enabled_locations){
+            glDisableVertexAttribArray(location);
+        }
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 }
 void Vbo::draw(GlslProg shader)
@@ -126,6 +137,11 @@ void Vbo::Attribute::bindAndEnable()
     bind();
     glVertexAttribPointer(mLocation, mSize, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(mLocation);
+}
+
+void Vbo::Attribute::disable()
+{
+    glDisableVertexAttribArray(mLocation);
 }
 
 

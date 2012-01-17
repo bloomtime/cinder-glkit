@@ -27,6 +27,7 @@ public:
         void bufferData();
         void bind();
         void bindAndEnable();
+        void disable();
         
         GLenum getTarget() const { return mTarget; }
         GLenum getType() const { return mType; }
