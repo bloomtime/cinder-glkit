@@ -54,7 +54,7 @@ protected:
 
     Vec2i mSize;
     Timer mTimer;
-    std::shared_ptr< Timeline > mTimeline;
+    TimelineRef mTimeline;
     
     std::vector< app::TouchEvent::Touch > mActiveTouches;
 
