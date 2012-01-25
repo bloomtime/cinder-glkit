@@ -39,13 +39,22 @@ public:
         int  getLocation() const { return mLocation; }
         
         AttributeRef setData(Buffer data){ mData = data; mDataDirty = true; return shared_from_this(); };
-        AttributeRef setData(const void* data, int data_length);
         const Buffer& getData() const { return mData; }
         
         template<typename T>
-        AttributeRef setData(const std::vector<T> &data)
-        {
-            return setData(&data[0], sizeof(T) * data.size());
+        AttributeRef setData(const T* data, size_t length){
+            if(length <= 0)
+                return shared_from_this();
+            
+            size_t byte_length = sizeof(T) * length;
+            
+            Buffer buf(byte_length);
+            buf.copyFrom(data, byte_length);
+            return setData(buf);
+        }
+        template<typename T>
+        AttributeRef setData(const std::vector<T> &data){
+            return setData(&data[0], data.size());
         }
         
         const std::string& getName() const { return mName; }

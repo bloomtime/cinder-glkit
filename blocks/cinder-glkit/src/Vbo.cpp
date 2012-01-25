@@ -28,7 +28,7 @@ Vbo::AttributeRef Vbo::get(const string &name)
 void Vbo::assignLocations(GlslProg shader)
 {
     for(auto &pair : mAttributes){
-        pair.second->setLocation(shader.getAttribLocation(pair.first)); // Returns -1 if attribute is not used
+        pair.second->setLocation(shader.getAttribLocation(pair.first));
     }
 }
 
@@ -37,7 +37,6 @@ void Vbo::draw()
     int length = numeric_limits<int>::max();
     
     vector<int> enabled_locations;
-    enabled_locations.reserve(mAttributes.size());
     
     // Bind any vertex attributes that have data and a location
     for(auto &pair : mAttributes){
@@ -60,7 +59,6 @@ void Vbo::draw()
         else{
             glDrawArrays(mType, 0, length);
         }
-        
         // Disable vertex attributes and Reset bind state
         for(int location : enabled_locations){
             glDisableVertexAttribArray(location);
@@ -108,16 +106,6 @@ Vbo::AttributeRef Vbo::Attribute::createIndex(GLenum usage)
     return AttributeRef(new Attribute(string("index"), 1, GL_UNSIGNED_SHORT, usage));
 }
 
-Vbo::AttributeRef Vbo::Attribute::setData(const void* data, int data_length)
-{
-    if(data_length <= 0)
-        return shared_from_this();
-
-    Buffer buf(data_length);
-    buf.copyFrom(data, data_length);
-    return setData(buf);
-}
-
 void Vbo::Attribute::bufferData()
 {
     if(!mBuffer)
@@ -158,8 +146,8 @@ VboRef Vbo::createPlane(const Vec2f &p1, const Vec2f &p2)
     float texcoords[] = { 0, 0, 0, 1, 1, 0, 1, 1 };
     
     VboRef vbo = Vbo::create(GL_TRIANGLE_STRIP);
-    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(float) * 12));
-    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(float) * 8));
+    vbo->set(Attribute::create("position", 3)->setData(positions, 12));
+    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, 8));
     
     return vbo;
 }
@@ -199,10 +187,10 @@ VboRef Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
                           20,21,22,20,22,23 };
     
     VboRef vbo = Vbo::create(GL_TRIANGLES);
-    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(GLfloat) * 72));
-    vbo->set(Attribute::create("normal", 3)->setData(normals, sizeof(GLfloat) * 72));
-    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, sizeof(GLfloat) * 48));
-    vbo->set(Attribute::createIndex()->setData(indices, sizeof(GLushort) * 36));
+    vbo->set(Attribute::create("position", 3)->setData(positions, 72));
+    vbo->set(Attribute::create("normal", 3)->setData(normals, 72));
+    vbo->set(Attribute::create("texcoord", 2)->setData(texcoords, 48));
+    vbo->set(Attribute::createIndex()->setData(indices, 36));
 
     return vbo;
 }
@@ -219,8 +207,8 @@ VboRef Vbo::createWireBox(const Vec3f &p1, const Vec3f &p2)
     GLushort indices[] = { 0,1, 1,2, 2,3, 3,0, 4,5, 5,6, 6,7, 7,4, 0,4, 3,7, 2,6, 1,5 };
     
     VboRef vbo = Vbo::create(GL_LINES);
-    vbo->set(Attribute::create("position", 3)->setData(positions, sizeof(GLfloat) * 24));
-    vbo->set(Attribute::createIndex()->setData(indices, sizeof(GLushort) * 24));
+    vbo->set(Attribute::create("position", 3)->setData(positions, 24));
+    vbo->set(Attribute::createIndex()->setData(indices, 24));
     
     return vbo;
 }
