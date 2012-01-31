@@ -16,8 +16,8 @@ public:
     enum UIInterfaceOrientation {
         UIInterfaceOrientationPortrait           = 1,
         UIInterfaceOrientationPortraitUpsideDown = 2,
-        UIInterfaceOrientationLandscapeRight     = 4,
-        UIInterfaceOrientationLandscapeLeft      = 3
+        UIInterfaceOrientationLandscapeRight     = 3,
+        UIInterfaceOrientationLandscapeLeft      = 4
     };
 
     CinderGLSketch()
