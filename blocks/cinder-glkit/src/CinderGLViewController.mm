@@ -60,7 +60,7 @@ using namespace ci::app;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return mSketch->supportsInterfaceOrientation( (int)interfaceOrientation );
+    return mSketch->supportsInterfaceOrientation((CinderGLSketch::UIInterfaceOrientation)interfaceOrientation);
 }
 
 
