@@ -24,6 +24,7 @@ public:
     : mNeedsSetup(true)
     , mTimer(true)
     , mTimeline(Timeline::create())
+    , mFrameCount(0)
     {};
     
     virtual ~CinderGLSketch(){};
@@ -44,6 +45,7 @@ public:
     float        getAspectRatio() const { return (float)mSize.x / (float)mSize.y; }
     
     double getElapsedSeconds() const { return mTimer.getSeconds(); }
+    uint32_t getElapsedFrames() const { return mFrameCount; }
 
     virtual void touchesBegan(app::TouchEvent event){}
     virtual void touchesMoved(app::TouchEvent event){}
@@ -63,6 +65,8 @@ protected:
     Vec2i mSize;
     Timer mTimer;
     TimelineRef mTimeline;
+    
+    uint32_t mFrameCount;
     
     std::vector< app::TouchEvent::Touch > mActiveTouches;
 

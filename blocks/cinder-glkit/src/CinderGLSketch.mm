@@ -15,6 +15,7 @@ void CinderGLSketch::privateUpdate__()
 {
     mTimeline->stepTo(getElapsedSeconds());
     update();
+    mFrameCount++;
 }
 
 } // namespace cinder
