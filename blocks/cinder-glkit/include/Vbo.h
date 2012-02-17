@@ -99,12 +99,15 @@ public:
 
     ~Vbo();
 
-    void update();
+    void bind();
+    void unbind();
     void draw();
     void draw(GlslProg shader);
     AttributeRef get(const std::string &name);
     void set(AttributeRef attr);
     void assignLocations(GlslProg shader);
+    
+    GLenum getType() const { return mType; }
     
     static VboRef create(GLenum type);
     static VboRef createPlane(const Vec2f &p1, const Vec2f &p2);
@@ -119,6 +122,10 @@ protected:
     Vbo(GLenum type);
 
     GLenum mType;
+    
+    AttributeRef mBoundIndices;
+    size_t mMinBoundAttributeLength;
+    std::vector< int > mEnabledLocations;
 
     std::tr1::unordered_map< std::string, AttributeRef > mAttributes;
 

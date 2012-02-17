@@ -32,39 +32,51 @@ void Vbo::assignLocations(GlslProg shader)
     }
 }
 
-void Vbo::draw()
+void Vbo::bind()
 {
-    int length = numeric_limits<int>::max();
-    
-    vector<int> enabled_locations;
+    mMinBoundAttributeLength = numeric_limits<size_t>::max();
+    mEnabledLocations.clear();
+    mBoundIndices.reset();
     
     // Bind any vertex attributes that have data and a location
     for(auto &pair : mAttributes){
         AttributeRef attr = pair.second;
         if(attr->getTarget() == GL_ARRAY_BUFFER && attr->getLocation() >= 0 && attr->getData()){
             attr->bindAndEnable();
-            enabled_locations.push_back(attr->getLocation());
-            length = min(length, attr->getLength());
+            mEnabledLocations.push_back(attr->getLocation());
+            mMinBoundAttributeLength = math<size_t>::min(mMinBoundAttributeLength, attr->getLength());
+        }
+        else if(attr->getTarget() == GL_ELEMENT_ARRAY_BUFFER){
+            attr->bind();
+            mBoundIndices = attr;
         }
     }
+}
+void Vbo::unbind()
+{
+    // Disable vertex attributes and Reset bind state
+    for(int location : mEnabledLocations){
+        glDisableVertexAttribArray(location);
+    }
+    if(mBoundIndices)
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    else
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void Vbo::draw()
+{
+    bind();
     
     // Draw if any attributes are enabled
-    if(enabled_locations.size() > 0){
-        if(mAttributes.count("index")){
-            AttributeRef index = mAttributes["index"];
-            index->bind();
-            glDrawElements(mType, index->getData().getDataSize() / 2, index->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-        }
-        else{
-            glDrawArrays(mType, 0, length);
-        }
-        // Disable vertex attributes and Reset bind state
-        for(int location : enabled_locations){
-            glDisableVertexAttribArray(location);
-        }
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    if(mEnabledLocations.size() > 0){
+        if(mBoundIndices)
+            glDrawElements(mType, mBoundIndices->getData().getDataSize() / 2, mBoundIndices->getType(), 0); // TODO(ryan): This assumes the indices are 16bit ints
+        else
+            glDrawArrays(mType, 0, mMinBoundAttributeLength);
     }
+    
+    unbind();
 }
 void Vbo::draw(GlslProg shader)
 {
