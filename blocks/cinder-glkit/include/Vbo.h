@@ -4,6 +4,7 @@
 #include "cinder/gl/GlslProg.h"
 #include "cinder/Vector.h"
 #include "cinder/Color.h"
+#include "cinder/Rect.h"
 
 #include <tr1/unordered_map>
 
@@ -112,6 +113,7 @@ public:
     static VboRef create(GLenum type);
     static VboRef createPlane(const Vec2f &p1, const Vec2f &p2);
     static VboRef createPlane(const Vec2f &size);
+    static VboRef createPlane(const Rectf &rect);
     static VboRef createBox(const Vec3f &p1, const Vec3f &p2);
     static VboRef createBox(const Vec3f &size);
     static VboRef createWireBox(const Vec3f &p1, const Vec3f &p2);

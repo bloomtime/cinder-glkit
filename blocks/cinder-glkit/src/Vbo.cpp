@@ -167,6 +167,10 @@ VboRef Vbo::createPlane(const Vec2f &size)
 {
     return createPlane(size * -0.5f, size * 0.5f);
 }
+VboRef Vbo::createPlane(const Rectf &rect)
+{
+    return createPlane(rect.getUpperLeft(), rect.getLowerRight());
+}
 
 VboRef Vbo::createBox(const Vec3f &p1, const Vec3f &p2)
 {
